@@ -25,7 +25,7 @@ SECRET_KEY = ')psg^pqp8%y)ojc^x$yk6+wkdk!pc101n6&o!xvk6!v4*o+cv+'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['fa17-cs411-09.cs.illinois.edu','localhost']
 
 
 # Application definition
@@ -83,8 +83,8 @@ DATABASES = {
      'default': {
          'ENGINE': 'django.db.backends.mysql',
          'NAME': 'myfirstdb',
-         'USER': 'iamty',
-         'PASSWORD': 'saturdaynight',
+         'USER': 'yutao2',
+         'PASSWORD': '',
          'HOST': 'localhost',
          'PORT': '',
      }
@@ -128,3 +128,4 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, "static/")
