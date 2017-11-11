@@ -11,4 +11,4 @@ from .models import Business, User
 def home(request):
 	business_list = Business.objects.all()[0:10]
 	context = {'business_list': business_list}
-    return render(request, 'yelp/index.html', context)
+        return render(request, 'yelp/index.html', context)
