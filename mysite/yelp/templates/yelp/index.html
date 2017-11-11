@@ -1,0 +1,9 @@
+{% if business_list %}
+	<ul>
+		{% for  business in business_list %}
+			<li>{{business.name}}</li>
+	</ul>
+
+{% else %}
+	<p>No results found.</p>
+{% endif %}
