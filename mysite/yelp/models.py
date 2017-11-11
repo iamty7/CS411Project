@@ -100,6 +100,11 @@ class Business(models.Model):
     review_count = models.IntegerField(blank=True, null=True)
     is_open = models.IntegerField(blank=True, null=True)
 
+
+    def __str__(self):
+        return self.name
+
+
     class Meta:
         managed = False
         db_table = 'business'
@@ -190,6 +195,9 @@ class Hours(models.Model):
     hours = models.CharField(max_length=255, blank=True, null=True)
     business = models.ForeignKey(Business, models.DO_NOTHING)
 
+    def __str__(self):
+        return self.hours
+
     class Meta:
         managed = False
         db_table = 'hours'
@@ -256,6 +264,10 @@ class User(models.Model):
     compliment_writer = models.IntegerField(blank=True, null=True)
     compliment_photos = models.IntegerField(blank=True, null=True)
 
+
+    def __str__(self):
+        return self.name
+        
     class Meta:
         managed = False
         db_table = 'user'
