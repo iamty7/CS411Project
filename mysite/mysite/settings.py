@@ -37,6 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'yelp.apps.YelpConfig',
 ]
 
 MIDDLEWARE = [
@@ -82,10 +83,10 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 DATABASES = {
      'default': {
          'ENGINE': 'django.db.backends.mysql',
-         'NAME': 'myfirstdb',
+         'NAME': 'yelp_db',
          'USER': 'yutao2',
          'PASSWORD': '',
-         'HOST': 'localhost',
+         'HOST': '127.0.0.1',
          'PORT': '',
      }
 }
