@@ -17,11 +17,12 @@ from django.conf.urls import url, include
 from django.contrib import admin
 
 # Import view functions from yelp app.
-from yelp.views import home, searchBusiness
+from yelp.views import home, searchBusiness, business_detail
 
 urlpatterns = [
-    url(r'^$', home),
-    url(r'^home/$', home),
-    url(r'^search/$', searchBusiness),
+    url(r'^$', home, name = 'home'),
+    url(r'^home/$', home, name = 'home'),
+    url(r'^search/$', search_business, name = 'search-business'),
+    url(r'^business/(?P<business_id>\d+)/$', business_detail, name = 'business-detail'),
     url(r'^admin/', admin.site.urls),
 ]

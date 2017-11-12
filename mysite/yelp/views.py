@@ -2,7 +2,7 @@
 from __future__ import unicode_literals
 
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, Http404
 
 from .models import Business, User
 # Create your views here.
@@ -13,7 +13,8 @@ def home(request):
 	#context = {'business_list': business_list}
         return render(request, 'yelp/index.html')
 
-def searchBusiness(request):
+
+def search_business(request):
 	keyword = request.GET.get('keyword')
 	error_msg = ''
 
@@ -23,3 +24,12 @@ def searchBusiness(request):
 
 	business_list = Business.objects.filter(name__icontains = keyword)[0:5]
 	return render(request, 'yelp/searchResults.html', {'business_list': business_list, 'error_msg': error_msg})
+
+
+def business_detail(request, business_id):
+	try:
+		business = Business.objects.get(pk = business_id)
+	except Business.DoesNotExist as e:
+		raise Http("Business does not exist!")
+	
+	return render(request, 'yelp/business', {'business': business})

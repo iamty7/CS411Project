@@ -12,7 +12,7 @@
 			{% for  business in business_list %}
 			<ul>
 				<p>Result: {{ forloop.counter }}</p>
-				<li>Name: {{business.name}}</li>
+				<li><a href="{% url 'business-detail' business.id %}">Name: {{business.name}}<a></li>
 				<li>Stars: {{business.stars}}</li>
 				<li>Review_count: {{business.review_count}}</li>
 				<br>
