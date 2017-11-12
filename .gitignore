@@ -4,10 +4,10 @@
 __pycache__/
 *.py[cod]
 *$py.class
-
+*.pyc
 
 # swap file
-.swp
+*.swp
 
 # C extensions
 *.so
