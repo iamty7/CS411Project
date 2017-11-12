@@ -1,5 +1,5 @@
-<form role="search" method="get" id="searchform" action="/search/">
+<form role="search" method="post" id="searchform" action="/search/">
       {% csrf_token %}
-     <input type="search" name="keyword" placeholder="Search" required>
-     <button type="submit"><span class="ion-ios-search-strong"></span></button>
+     <input type="search" name="keyword" placeholder="Search some business" required>
+     <input type="submit" value="Search">
 </form>

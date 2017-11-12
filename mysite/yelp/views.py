@@ -15,7 +15,7 @@ def home(request):
 
 
 def search_business(request):
-	keyword = request.GET.get('keyword')
+	keyword = request.POST.get('keyword')
 	error_msg = ''
 
 	if not keyword:
