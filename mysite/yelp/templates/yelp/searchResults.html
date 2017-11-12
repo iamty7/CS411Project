@@ -8,10 +8,10 @@
 {% else %}
 	{% if business_list %}
 		<div>
-			{% with resultCnt = 1%}
+			{% with resultCnt=1 %}
 			{% for  business in business_list %}
 			<ul>
-				<p>Result: {{i}}</p>
+				<p>Result: {{resultCnt}}</p>
 				<li>Name: {{business.name}}</li>
 				<li>Stars: {{business.stars}}</li>
 				<li>Review_count: {{business.review_count}}</li>
