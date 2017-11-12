@@ -32,4 +32,4 @@ def business_detail(request, business_id):
 	except Business.DoesNotExist as e:
 		raise Http("Business does not exist!")
 	
-	return render(request, 'yelp/business', {'business': business})
+	return render(request, 'yelp/business.html', {'business': business})
