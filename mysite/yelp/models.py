@@ -275,12 +275,12 @@ class User(models.Model):
 #class WebUser(models.Model):
 
 
-class Comment():
+class Comment(models.Model):
     id = models.CharField(primary_key=True, max_length=22)
     business = models.ForeignKey(Business, on_delete=models.CASCADE)
     comment_text = models.TextField(blank=True, null=True)
     comm_date = models.DateTimeField()
     user = models.CharField(max_length=255, blank=True, default = 'Anonymous')
 
-   class Meta:
+    class Meta:
         db_table = 'comment'

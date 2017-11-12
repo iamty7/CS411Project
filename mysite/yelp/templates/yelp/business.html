@@ -10,10 +10,14 @@
 	<li>State: {{business.state}}</li>
 </ul>
 
-<h2>Comment: </h2>
+<h2>Comments: </h2>
 
 <ul>
+    {% if business.comment_set.count %}
 	{% for comment in business.comment_set.all %}
-		<li>{{comment.comment_text}}</li>>
+		<li>{{comment.comment_text}}   -- by {{comment.user}} at {{comment.comm_date}}</li>
 	{% endfor %}
+    {% else %}
+        <p>No comments for this business. Add one!</>
+    {% endif %}
 </ul>
