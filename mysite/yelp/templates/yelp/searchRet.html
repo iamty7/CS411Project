@@ -1,0 +1,30 @@
+<!--search results-->
+
+
+{% if error_msg %}
+	<p>{{error_msg}}</p>
+
+
+{% else %}
+	{% if business_list %}
+		<div>
+			{% with resultCnt = 1%}
+			{% for  business in business_list %}
+			<ul>
+				<p>Result: {{i}}</p>
+				<li>Name: {{business.name}}</li>
+				<li>Stars: {{business.stars}}</li>
+				<li>Review_count: {{business.review_count}}</li>
+				<br>
+				<br>
+			</ul>
+            {% endfor %}
+            {% endwith %}
+		</div>
+
+	{% else %}
+		<p>No results found.</p>
+
+	{% endif %}
+
+{% endif %}

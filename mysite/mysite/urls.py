@@ -22,5 +22,6 @@ from yelp.views import home
 urlpatterns = [
     url(r'^$', home),
     url(r'^home/$', home),
+    url(r'^search/$', searchBusiness),
     url(r'^admin/', admin.site.urls),
 ]
