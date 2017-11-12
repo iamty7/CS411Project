@@ -33,3 +33,8 @@ def business_detail(request, business_id):
 		raise Http("Business does not exist!")
 	
 	return render(request, 'yelp/business.html', {'business': business})
+
+def delete_comment(request, comment_id, business.id):
+	comment = get_object_or_404(Comment, pk=comment_id)
+	comment.delete()
+	return render(request, 'yelp/business.html', {'business': business})

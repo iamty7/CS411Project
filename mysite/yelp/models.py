@@ -8,7 +8,7 @@
 from __future__ import unicode_literals
 from django.utils.encoding import python_2_unicode_compatible
 from django.db import models
-
+from django.core.urlresolvers import reverse
 
 class Attribute(models.Model):
     business = models.ForeignKey('Business', models.DO_NOTHING)
@@ -103,6 +103,9 @@ class Business(models.Model):
 
     def __str__(self):
         return self.name
+
+    def get_absolute_url(self):
+        return reverse('business-detail', kwargs = {'business_id': self.pk})
 
 
     class Meta:
