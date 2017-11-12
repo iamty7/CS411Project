@@ -11,7 +11,7 @@
 			{% with resultCnt=1 %}
 			{% for  business in business_list %}
 			<ul>
-				<p>Result: {{resultCnt}}</p>
+				<p>Result: {{ forloop.counter }}</p>
 				<li>Name: {{business.name}}</li>
 				<li>Stars: {{business.stars}}</li>
 				<li>Review_count: {{business.review_count}}</li>
