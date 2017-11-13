@@ -16,9 +16,9 @@
     {% if business.comment_set.count %}
 		{% for comment in business.comment_set.all %}
 		<li>
-			<input type="text" name="comment_text" value={{comment.comment_text}}>
+			<input type="text" name="comment_text" value="{{comment.comment_text}}">
 			-- by {{comment.user}} at {{comment.comm_date}}
-			<a href="{% url 'delete-comment' comment.id business.id %}"><button ></button></a>
+			<a href="{% url 'delete-comment' comment.id %}"><button value="delete">delete</button></a>
 		</li>
 		{% endfor %}
     {% else %}
