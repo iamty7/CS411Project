@@ -16,12 +16,33 @@
     {% if business.comment_set.count %}
 		{% for comment in business.comment_set.all %}
 		<li>
-			<input type="text" name="comment_text" value="{{comment.comment_text}}">
-			-- by {{comment.user}} at {{comment.comm_date}}
+			<form  method="post" name = "commentform">
+				{% csrf_token %}
+				<input type="text" name="comment_text" value="{{comment.comment_text}}"> by {{comment.user}} at {{comment.comm_date}}
+				<input type="button" value="update" onclick="update_comment()">
+				<input type="button" value="delete" onclick="delete_comment()">
+				
+			</form>
+
+
+			<!-- <input type="text" name="comment_text" value="{{comment.comment_text}}">
+			 by {{comment.user}} at {{comment.comm_date}}
 			<a href="{% url 'delete-comment' comment.id %}"><button value="delete">delete</button></a>
+			<a href="{% url 'update-comment' comment.id %}"><button value="delete">update</button></a> -->
 		</li>
 		{% endfor %}
     {% else %}
         <p>No comments for this business. Add one!</>
     {% endif %}
 </ul>
+
+<script language="JavaScript">
+function delete_comment() {
+    commentform.action = "/deleteComment/";
+    commentform.submit();
+}
+function update_comment(operID) {
+    commentform.action = "/updateComment/";
+    commentform.submit();
+}
+</script>
