@@ -1,10 +1,10 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse, Http404
 
-from .models import Business, User, Comment
+from .models import Business, User , Comment
 # Create your views here.
 
 
@@ -38,4 +38,5 @@ def delete_comment(request, comment_id):
 	comment = get_object_or_404(Comment, pk=comment_id)
         business = comment.business
 	comment.delete()
-	return render(request, 'yelp/business.html', {'business': business})
+	#return render(request, 'yelp/business.html', {'business': business})
+        return redirect(business_detail, business_id = business.id)
