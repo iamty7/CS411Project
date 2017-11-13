@@ -17,7 +17,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 
 # Import view functions from yelp app.
-from yelp.views import home, search_business, business_detail, delete_comment
+from yelp.views import home, search_business, business_detail, delete_comment, update_comment
 
 urlpatterns = [
     url(r'^$', home, name = 'home'),

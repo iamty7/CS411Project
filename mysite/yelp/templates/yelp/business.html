@@ -16,19 +16,16 @@
     {% if business.comment_set.count %}
 		{% for comment in business.comment_set.all %}
 		<li>
-			<form  method="post" name = "commentform">
+			<form  method="post" name = "commentform" >
 				{% csrf_token %}
-				<input type="text" name="comment_text" value="{{comment.comment_text}}"> by {{comment.user}} at {{comment.comm_date}}
-				<input type="button" value="update" onclick="update_comment()">
-				<input type="button" value="delete" onclick="delete_comment()">
+				<input type="hidden" name="comment_id" value="{{comment.id}}">
+                                <input type="text" name="comment_text" value="{{comment.comment_text}}"> by {{comment.user}} at {{comment.comm_date}}
+				<input type="submit" value="update" formaction="/updateComment/" onclick="update_comment()">
+				<input type="submit" value="delete" formaction="/deleteComment/" onclick="delete_comment()">
 				
 			</form>
 
 
-			<!-- <input type="text" name="comment_text" value="{{comment.comment_text}}">
-			 by {{comment.user}} at {{comment.comm_date}}
-			<a href="{% url 'delete-comment' comment.id %}"><button value="delete">delete</button></a>
-			<a href="{% url 'update-comment' comment.id %}"><button value="delete">update</button></a> -->
 		</li>
 		{% endfor %}
     {% else %}
@@ -36,12 +33,12 @@
     {% endif %}
 </ul>
 
-<script language="JavaScript">
+<script type="text/javascript">
 function delete_comment() {
     commentform.action = "/deleteComment/";
     commentform.submit();
 }
-function update_comment(operID) {
+function update_comment() {
     commentform.action = "/updateComment/";
     commentform.submit();
 }

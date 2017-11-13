@@ -38,17 +38,20 @@ def business_detail(request, business_id):
 
 def delete_comment(request):
 	comment_text = request.POST.get('comment_text');
-	comment = get_object_or_404(Comment, Comment.comment_text = comment_text)
+	comment = get_object_or_404(Comment, comment_text = comment_text)
+        #comment = Comment.objects.get(comment_text=comment_text)
 	business = comment.business
 	comment.delete()
 	return redirect(business_detail, business_id = business.id)
 
 
 def update_comment(request):
-	comment_text = request.POST.get('comment_text');
-	comment = get_object_or_404(Comment, Comment.comment_text = comment_text)
+	comment_id = request.POST.get('comment_id');
+        comment_text = request.POST.get('comment_text');
+	comment = get_object_or_404(Comment, pk=comment_id)
 	comment.comment_text = comment_text
 	comment.comm_date = timezone.now()
+        comment.save()
 	business = comment.business
 	return redirect(business_detail, business_id = business.id)
 
