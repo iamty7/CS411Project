@@ -142,17 +142,21 @@
 								Write your comment here
 							</h4>
 						</div>
-						<div class="modal-body">
-							<textarea class="form-control" rows="5"></textarea>
-						</div>
-						<div class="modal-footer">
-							<button type="button" class="btn btn-default" data-dismiss="modal">
-								close
-							</button>
-							<button type="button" class="btn btn-primary">
-								submmit
-							</button>
-						</div>
+						<form method="post" action="/addComment/">
+							<div class="modal-body">
+									<input type="hidden" name="business_id" value="{%  business.id %}" >
+									<textarea class="form-control" rows="5" name="comment_text"></textarea>
+								
+							</div>
+							<div class="modal-footer">
+								<button type="button" class="btn btn-default" data-dismiss="modal">
+									close
+								</button>
+								<button type="button" class="btn btn-primary">
+									submmit
+								</button>
+							</div>
+						</form>
 					</div>
 					<!-- /.modal-content -->
 				</div>
@@ -172,10 +176,10 @@
 		<!-- /.container -->
 
 		<!-- jQuery -->
-		<script src="js/jquery-3.2.1.js"></script>
+		<script src="/static/homepage/js/jquery-3.2.1.js"></script>
 
 		<!-- Bootstrap Core JavaScript -->
-		<script src="js/bootstrap.min.js"></script>
+		<script src="/static/homepage/js/bootstrap.min.js"></script>
 
 	</body>
 

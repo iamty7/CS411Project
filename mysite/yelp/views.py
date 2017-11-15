@@ -12,7 +12,7 @@ from .models import Business, User, Comment
 def home(request):
 	#business_list = Business.objects.all()[0:10]
 	#context = {'business_list': business_list}
-        return render(request, 'yelp/index.html')
+    return render(request, 'yelp/index.html')
 
 
 def search_business(request):
@@ -37,7 +37,7 @@ def business_detail(request, business_id):
 
 
 def delete_comment(request):
-	comment_text = request.POST.get('comment_text');
+	comment_text = request.POST.get('comment_text')
 	comment = get_object_or_404(Comment, comment_text = comment_text)
         #comment = Comment.objects.get(comment_text=comment_text)
 	business = comment.business
@@ -46,14 +46,23 @@ def delete_comment(request):
 
 
 def update_comment(request):
-	comment_id = request.POST.get('comment_id');
-        comment_text = request.POST.get('comment_text');
+	comment_id = request.POST.get('comment_id')
+    comment_text = request.POST.get('comment_text')
 	comment = get_object_or_404(Comment, pk=comment_id)
 	comment.comment_text = comment_text
 	comment.comm_date = timezone.now()
-        comment.save()
+    comment.save()
 	business = comment.business
 	return redirect(business_detail, business_id = business.id)
+
+def add_comment(request):
+	business_id = request.POST.get('business_id')
+    comment_text = request.POST.get('comment_text')
+    business = Business.objects.get(pk=business_id)
+    business.comment_set.create(comment_text=comment_text,comm_date=timezone.now())
+
+	return redirect(business_detail, business_id = business_id.id)
+
 
 #def delete_comment(request, comment_id):
 #	comment = get_object_or_404(Comment, pk=comment_id)

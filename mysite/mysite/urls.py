@@ -25,6 +25,7 @@ urlpatterns = [
     url(r'^search/$', search_business, name = 'search-business'),
     url(r'^deleteComment/$', delete_comment ,name = 'delete-comment'),
     url(r'^updateComment/$', update_comment ,name = 'delete-comment'),
+    url(r'^addComment/$', add_comment ,name = 'add-comment'),
     #url(r'^deleteComment/(?P<comment_id>\S*)/$', delete_comment ,name = 'delete-comment'),
     url(r'^business/(?P<business_id>\S+)/$', business_detail, name = 'business-detail'),
     url(r'^admin/', admin.site.urls),
