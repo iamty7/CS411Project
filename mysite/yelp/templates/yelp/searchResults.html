@@ -75,10 +75,10 @@
 				
 				<!-- Projects Row -->
 				<div class="row">
-				{% for  business in business_list|slice:"1:3" %}
+				{% for  business in business_list|slice:"0:3" %}
 					<div class="col-md-4 portfolio-item">
 						<a href="#">
-							<img class="/static/homepage/img-responsive" src="http://placehold.it/700x400" alt="">
+							<img class="img-responsive" src="http://placehold.it/700x400" alt="">
 						</a>
 						<h3>
 	                    <a href="{% url 'business-detail' business.id %}">Name: {{business.name}}<a>
@@ -97,10 +97,10 @@
 				{% if business_list.count > 3 %}
 					<!-- Projects Row -->
 					<div class="row">
-					{% for  business in business_list|slice:"4:6" %}
+					{% for  business in business_list|slice:"3:6" %}
 						<div class="col-md-4 portfolio-item">
 							<a href="#">
-								<img class="/static/homepage/img-responsive" src="http://placehold.it/700x400" alt="">
+								<img class="img-responsive" src="http://placehold.it/700x400" alt="">
 							</a>
 							<h3>
 		                    <a href="{% url 'business-detail' business.id %}">Name: {{business.name}}<a>
@@ -120,10 +120,10 @@
 				{% if business_list.count > 6 %}
 					<!-- Projects Row -->
 					<div class="row">
-					{% for  business in business_list|slice:"7:9" %}
+					{% for  business in business_list|slice:"6:9" %}
 						<div class="col-md-4 portfolio-item">
 							<a href="#">
-								<img class="/static/homepage/img-responsive" src="http://placehold.it/700x400" alt="">
+								<img class="img-responsive" src="http://placehold.it/700x400" alt="">
 							</a>
 							<h3>
 		                    <a href="{% url 'business-detail' business.id %}">Name: {{business.name}}<a>

@@ -23,7 +23,7 @@ def search_business(request):
 		error_msg = 'Please type your keyword to search!'
 		return render(request, 'yelp/searchResults.html', {'error_msg': error_msg})
 
-	business_list = Business.objects.filter(name__icontains = keyword)[0:5]
+	business_list = Business.objects.filter(name__icontains = keyword)[0:9]
 	return render(request, 'yelp/searchResults.html', {'business_list': business_list, 'error_msg': error_msg})
 
 
