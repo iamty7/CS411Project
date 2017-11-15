@@ -9,7 +9,7 @@
 		<meta name="description" content="">
 		<meta name="author" content="">
 
-		<title>3 Col Portfolio - Start Bootstrap Template</title>
+		<title>Sprout</title>
 
 		<link href="/static/homepage/css/bootstrap.min.css" rel="stylesheet">
 		<link rel="stylesheet" href="/static/homepage/font-awesome/css/font-awesome.min.css">
@@ -43,7 +43,8 @@
 				</div>
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="search-form wow pulse" data-wow-delay="0.8s">
-					<form action="/search/" action="post" class="form-inline" style=padding-top:8px ;>
+					<form action="/search/" method="post" class="form-inline" style="padding-top:8px;">
+                                                {% csrf_token %}
 						<div class="form-group">
 							<input type="search" class="form-control" placeholder="burgers, chinese food..." name="keyword">
 						</div>
@@ -64,7 +65,8 @@
 			<!-- Page Header -->
 			<div class="row">
 				<div class="col-lg-12">
-					<h1 class="page-header">???
+					<h1 class="page-header">Results:
+
                 </h1>
 				</div>
 			</div>
@@ -81,7 +83,7 @@
 							<img class="img-responsive" src="http://placehold.it/700x400" alt="">
 						</a>
 						<h3>
-	                    <a href="{% url 'business-detail' business.id %}">Name: {{business.name}}<a>
+	                    <a href="{% url 'business-detail' business.id %}">{{business.name}}<a>
 	                </h3>
 						<p>
 							<ul class="primary-nav">
@@ -103,7 +105,7 @@
 								<img class="img-responsive" src="http://placehold.it/700x400" alt="">
 							</a>
 							<h3>
-		                    <a href="{% url 'business-detail' business.id %}">Name: {{business.name}}<a>
+		                    <a href="{% url 'business-detail' business.id %}">{{business.name}}<a>
 		                </h3>
 							<p>
 								<ul class="primary-nav">
@@ -126,7 +128,7 @@
 								<img class="img-responsive" src="http://placehold.it/700x400" alt="">
 							</a>
 							<h3>
-		                    <a href="{% url 'business-detail' business.id %}">Name: {{business.name}}<a>
+		                    <a href="{% url 'business-detail' business.id %}">{{business.name}}<a>
 		                </h3>
 							<p>
 								<ul class="primary-nav">

@@ -47,21 +47,21 @@ def delete_comment(request):
 
 def update_comment(request):
 	comment_id = request.POST.get('comment_id')
-    comment_text = request.POST.get('comment_text')
+    	comment_text = request.POST.get('comment_text')
 	comment = get_object_or_404(Comment, pk=comment_id)
 	comment.comment_text = comment_text
 	comment.comm_date = timezone.now()
-    comment.save()
+    	comment.save()
 	business = comment.business
 	return redirect(business_detail, business_id = business.id)
 
 def add_comment(request):
 	business_id = request.POST.get('business_id')
-    comment_text = request.POST.get('comment_text')
-    business = Business.objects.get(pk=business_id)
-    business.comment_set.create(comment_text=comment_text,comm_date=timezone.now())
+    	comment_text = request.POST.get('comment_text')
+    	business = Business.objects.get(pk=business_id)
+    	business.comment_set.create(comment_text=comment_text,comm_date=timezone.now())
 
-	return redirect(business_detail, business_id = business_id.id)
+	return redirect(business_detail, business_id = business_id)
 
 
 #def delete_comment(request, comment_id):

@@ -51,7 +51,7 @@
 				</div>
 				<!-- Collect the nav links, forms, and other content for toggling -->
 				<div class="search-form wow pulse" data-wow-delay="0.8s">
-					<form action="/search/" class="form-inline" style="padding-top:8px;">
+					<form action="/search/" method="post" class="form-inline" style="padding-top:8px;">
 						{% csrf_token %}
 						<div class="form-group">
 							<input type="search" class="form-control" placeholder="burgers, chinese food..." name="keyword">
@@ -143,8 +143,9 @@
 							</h4>
 						</div>
 						<form method="post" action="/addComment/">
+							{% csrf_token %}
 							<div class="modal-body">
-									<input type="hidden" name="business_id" value="{%  business.id %}" >
+									<input type="hidden" name="business_id" value="{{  business.id }}" >
 									<textarea class="form-control" rows="5" name="comment_text"></textarea>
 								
 							</div>
@@ -152,9 +153,7 @@
 								<button type="button" class="btn btn-default" data-dismiss="modal">
 									close
 								</button>
-								<button type="button" class="btn btn-primary">
-									submmit
-								</button>
+								<input type="submit" value="submit" class="btn btn-primary">
 							</div>
 						</form>
 					</div>
@@ -176,7 +175,7 @@
 		<!-- /.container -->
 
 		<!-- jQuery -->
-		<script src="/static/homepage/js/jquery-3.2.1.js"></script>
+		<script src="/static/homepage/js/jquery.min.js"></script>
 
 		<!-- Bootstrap Core JavaScript -->
 		<script src="/static/homepage/js/bootstrap.min.js"></script>
