@@ -1,45 +1,182 @@
-<!--business detail-->
+<!DOCTYPE html>
+<html lang="en">
 
+	<head>
 
-<h1>{{ business.name }}</h1>
-<ul>
-	<li>Stars: {{business.stars}}</li>
-	<li>Review_count: {{business.review_count}}</li>
-	<li>Address: {{business.address}}</li>
-	<li>City: {{business.city}}</li>
-	<li>State: {{business.state}}</li>
-</ul>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="description" content="">
+		<meta name="author" content="">
 
-<h2>Comments: </h2>
+		<title>Small Business - Start Bootstrap Template</title>
 
-<ul>
-    {% if business.comment_set.count %}
-		{% for comment in business.comment_set.all %}
-		<li>
-			<form  method="post" name = "commentform" >
-				{% csrf_token %}
-				<input type="hidden" name="comment_id" value="{{comment.id}}">
-                                <input type="text" name="comment_text" value="{{comment.comment_text}}"> by {{comment.user}} at {{comment.comm_date}}
-				<input type="submit" value="update" formaction="/updateComment/" onclick="update_comment()">
-				<input type="submit" value="delete" formaction="/deleteComment/" onclick="delete_comment()">
+		<!-- Bootstrap Core CSS -->
+		<link href="/static/homepage/css/bootstrap.min.css" rel="stylesheet">
+
+		<!-- Custom CSS -->
+		<link href="/static/homepage/css/small-business.css" rel="stylesheet">
+
+		<!--
+        	作者：offline
+        	时间：2017-11-13
+        	描述：adding link
+        -->
+
+		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+		<!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+	</head>
+
+	<body>
+
+		<!-- Navigation -->
+		<nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+			<div class="container">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+					<a class="navbar-brand" href="{% url 'home' %}">
+						<font size="5"><strong>Sprout&nbsp;&nbsp;&nbsp;</strong></font>
+					</a>
+				</div>
+				<!-- Collect the nav links, forms, and other content for toggling -->
+				<div class="search-form wow pulse" data-wow-delay="0.8s">
+					<form action="/search/" class="form-inline" style=padding-top:8px ;>
+						{% csrf_token %}
+						<div class="form-group">
+							<input type="search" class="form-control" placeholder="burgers, chinese food..." name="keyword">
+						</div>
+						<div class="form-group">
+							<input type="search" class="form-control" placeholder="city..." nam="city">
+						</div>
+						<input type="submit" class="btn" value="Search">
+					</form>
+				</div>
+				<!-- /.navbar-collapse -->
+			</div>
+			<!-- /.container -->
+		</nav>
+
+		<!-- Page Content -->
+		<div class="container">
+
+			<!-- Heading Row -->
+			<div class="row">
+				<div class="col-md-8">
+					<img class="img-responsive img-rounded" src="http://placehold.it/900x350" alt="">
+				</div>
+				<!-- /.col-md-8 -->
+				<div class="col-md-4">
+					<h1>{{ business.name }}</h1>
+					<p>Address:{{ business.address }}</p>
+					<p>City:{{ business.city }}</p>
+					<p>State:{{ business.state }}</p>
+					<p>Star:{{ business.star }}</p>
+					<button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">Write a comment</button>
+				</div>
+				<!-- /.col-md-4 -->
+			</div>
+			<!-- /.row -->
+
+			<hr>
+
+			<!-- Call to Action Well -->
+			<!--<div class="row">
+            <div class="col-lg-12">
+                <div class="well text-center">
+                    This is a well that is a great spot for a business tagline or phone number for easy access!
+                </div>
+            </div>
+            <!-- /.col-lg-12 -->
+			<!--</div>-->
+			<!-- /.row -->
+
+			<!-- Content Row -->
+			<div class="row">
+				{% if business.comment_set.count %}
+					{% for comment in business.comment_set.all %}
+						<div class="col-md-4">
+							<h2>Comment: {{forloop.counter}}</h2>
+							<form  method="post" name = "commentform" >
+							{% csrf_token %}
+								<input type="hidden" name="comment_id" value="{{comment.id}}">
+								<textarea name="comment_text" cols="45" rows="5">{{comment.comment_text}}</textarea>
+								<p> by {{comment.user}} at {{comment.comm_date}}</p>
+								<input type="submit" value="Update" formaction="/updateComment/" class="btn btn-default">
+								<input type="submit" value="Delete" formaction="/deleteComment/" class="btn btn-default">
+							</form>
+						</div>               
+					{% endfor %}
+			    {% else %}
+			        <p>No comments for this business. Add one!</>
+			    {% endif %}
+
 				
-			</form>
+			</div>
+			<!-- /.row -->
 
+			<!--
+            	作者：offline
+            	时间：2017-11-13
+            	描述：modal 
+            -->
+			<!-- 模态框（Modal） -->
+			<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+				<div class="modal-dialog">
+					<div class="modal-content">
+						<div class="modal-header">
+							<button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+					&times;
+				</button>
+							<h4 class="modal-title" id="myModalLabel">
+								Write your comment here
+							</h4>
+						</div>
+						<div class="modal-body">
+							<textarea class="form-control" rows="5"></textarea>
+						</div>
+						<div class="modal-footer">
+							<button type="button" class="btn btn-default" data-dismiss="modal">
+								close
+							</button>
+							<button type="button" class="btn btn-primary">
+								submmit
+							</button>
+						</div>
+					</div>
+					<!-- /.modal-content -->
+				</div>
+				<!-- /.modal -->
+			</div>
 
-		</li>
-		{% endfor %}
-    {% else %}
-        <p>No comments for this business. Add one!</>
-    {% endif %}
-</ul>
+			<!-- Footer -->
+			<footer>
+				<div class="row">
+					<div class="col-lg-12" align="center">
+						<p>Copyright &copy; Sprout 2017</p>
+					</div>
+				</div>
+			</footer>
 
-<script type="text/javascript">
-function delete_comment() {
-    commentform.action = "/deleteComment/";
-    commentform.submit();
-}
-function update_comment() {
-    commentform.action = "/updateComment/";
-    commentform.submit();
-}
-</script>
+		</div>
+		<!-- /.container -->
+
+		<!-- jQuery -->
+		<script src="js/jquery-3.2.1.js"></script>
+
+		<!-- Bootstrap Core JavaScript -->
+		<script src="js/bootstrap.min.js"></script>
+
+	</body>
+
+</html>
