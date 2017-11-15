@@ -54,7 +54,7 @@
 						<h1>Find Your Favorite Restaruants Here</h1>
 						<p>Feel free to explore thousands of restaruants here around the world! Our abundant records help you to find the right one</p>
 						<div class="search-form wow pulse" data-wow-delay="0.8s">
-							<form action="/search/" class=" form-inline">
+							<form action="/search/" class=" form-inline" method="post">
 								{% csrf_token %}
 								<div class="form-group">
 									<input type="search" class="form-control" placeholder="burgers, chinese food..." name="keyword">
