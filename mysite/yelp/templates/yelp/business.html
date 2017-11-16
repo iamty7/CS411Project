@@ -55,9 +55,9 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             
             <ul class="primary-nav pull-right" style="padding-top:15px;">
-                <li><a href="{% url 'home#features' %}">Features</a></li>
-                <li><a href="{% url 'home#recommendations' %}">Recommendation</a></li>
-                <li><a href="{% url 'home#teams' %}">Team</a></li>
+                <li><a href="{% url 'home' %}">Features</a></li>
+                <li><a href="{% url 'home' %}">Recommendation</a></li>
+                <li><a href="{% url 'home' %}">Team</a></li>
                 <li><a data-toggle="modal" href="javascript:void(0)" onclick="openLoginModal();">Log in</a></li>
                 <li><a data-toggle="modal" href="javascript:void(0)" onclick="openRegisterModal();">Register</a></li>
             </ul>
@@ -88,11 +88,11 @@
 
         <!-- Heading Row -->
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-9">
                 <img class="img-responsive img-rounded" src="static/homepage/images/result.jpg" alt="">
             </div>
             <!-- /.col-md-8 -->
-            <div class="col-md-4">
+            <div class="col-md-3">
                 <h3 style=padding-top:20px;>{{ business.name }}</h3>
                 <p>Address: {{ business.address }}</p>
                 <p>City: {{ business.city }}</p>
