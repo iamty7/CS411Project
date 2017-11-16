@@ -32,348 +32,347 @@
 			<div class="header-content clearfix">
 				<a class="logo" href="#">
 					<font size="5"><strong>Sprout</strong></font>
-				</font>
-			</a>
-			<nav class="navigation" role="navigation">
-				<ul class="primary-nav">
-					<li><a href="#features">Features</a></li>
-					<li><a href="#recommendations">Recommendation</a></li>
-					<li><a href="#teams">Team</a></li>
-					<li><a data-toggle="modal" href="javascript:void(0)" onclick="openLoginModal();">Log in</a>
-						<li><a data-toggle="modal" href="javascript:void(0)" onclick="openRegisterModal();">Register</a>
-						</ul>
-					</nav>
-					<a href="#" class="nav-toggle">Menu<span></span></a>
-				</div>
-				<!-- header content -->
-			</header>
-			<!-- header -->
-			<div class="container">
-				<div class="col-md-10 col-md-offset-1">
-					<div class="banner-text text-center">
-						<h1>Find Your Favorite Restaruants Here</h1>
-						<p>Feel free to explore thousands of restaruants here around the world! Our abundant records help you to find the right one</p>
-						<div class="search-form wow pulse" data-wow-delay="0.8s">
-							<form action="/search/" class=" form-inline" method="post">
-								{% csrf_token %}
-								<div class="form-group">
-									<input type="search" class="form-control" placeholder="burgers, chinese food..." name="keyword">
-								</div>
-								<div class="form-group">
-									<input type="search" class="form-control" placeholder="city..." name="city">
-								</div>
-								<input type="submit" class="btn" value="Search">
-							</form>
-						</div>
-					</div>
-					<!-- banner text -->
-				</div>
+				</a>
+				<nav class="navigation" role="navigation">
+					<ul class="primary-nav">
+						<li><a href="#features">Features</a></li>
+						<li><a href="#recommendations">Recommendation</a></li>
+						<li><a href="#teams">Team</a></li>
+						<li><a data-toggle="modal" href="javascript:void(0)" onclick="openLoginModal();">Log in</a></li>
+						<li><a data-toggle="modal" href="javascript:void(0)" onclick="openRegisterModal();">Register</a></li>
+					</ul>
+				</nav>
+				<a href="#" class="nav-toggle">Menu<span></span></a>
 			</div>
-		</section>
-		<!-- banner -->
-		<section id="features" class="features section">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-4 col-sm-6 feature text-center">
-						<span class="icon icon-tools"></span>
-						<div class="feature-content">
-							<h5>Clean Structure</h5>
-							<p>The front end is built on bootstrap v3 and the backend is powered by Django framework. Standalone webserver Njinx powered the website.</p>
-						</div>
-					</div>
-					<div class="col-md-4 col-sm-6 feature text-center">
-						<span class="icon icon-desktop"></span>
-						<div class="feature-content">
-							<h5>Adequate Functionality</h5>
-							<p>Sprout is a powerful website, which makes you easily find your favorite restaurant near you according to the rating and others' comments.</p>
-						</div>
-					</div>
-					<div class="col-md-4 col-sm-6 feature text-center">
-						<span class="icon icon-lightbulb"></span>
-						<div class="feature-content">
-							<h5>Intelligence</h5>
-							<p>Powerful recommendation system using artificial intelligence make things even easier. We know what you like and give you the right recommendations.</p>
-						</div>
-					</div>
-					<div class="col-md-4 col-sm-6 feature text-center">
-						<span class="icon icon-genius"></span>
-						<div class="feature-content">
-							<h5>User Centered</h5>
-							<p>Get tired of various advertisements on other webistes? These pain has become the past! Our website is ads-free just for better user experience.</p>
-						</div>
-					</div>
-					<div class="col-md-4 col-sm-6 feature text-center">
-						<span class="icon icon-briefcase"></span>
-						<div class="feature-content">
-							<h5>Powerful Database</h5>
-							<p>MariaDB, fork of MySQL, running behind the webiste. Queries can be returnned fast and accurate! Currently, the database is from Yelp and our recoreds is increasing!</p>
-						</div>
-					</div>
-					<div class="col-md-4 col-sm-6 feature text-center">
-						<span class="icon icon-download"></span>
-						<div class="feature-content">
-							<h5>Chat Now</h5>
-							<p>Sprout allows you connect with other user online! You now could share your ideas in real time! Invite your friends to join your dinner tonight online!</p>
-						</div>
+			<!-- header content -->
+		</header>
+		<!-- header -->
+		<div class="container">
+			<div class="col-md-10 col-md-offset-1">
+				<div class="banner-text text-center">
+					<h1>Find Your Favorite Restaruants Here</h1>
+					<p>Feel free to explore thousands of restaruants here around the world! Our abundant records help you to find the right one</p>
+					<div class="search-form wow pulse" data-wow-delay="0.8s">
+						<form action="/search/" class=" form-inline" method="post">
+							{% csrf_token %}
+							<div class="form-group">
+								<input type="search" class="form-control" placeholder="burgers, chinese food..." name="keyword">
+							</div>
+							<div class="form-group">
+								<input type="search" class="form-control" placeholder="city..." name="city">
+							</div>
+							<input type="submit" class="btn" value="Search">
+						</form>
 					</div>
 				</div>
+				<!-- banner text -->
 			</div>
-		</section>
-		<!-- features -->
-
-		<section id="recommendations" class="works section no-padding">
-			<div class="container-fluid">
-				<div class="row no-gutter">
-					<div class="col-lg-3 col-md-6 col-sm-6 work">
-						<a href="/static/homepage/images/work-1.jpg" class="work-box">
-							<img src="/static/homepage/images/work-1.jpg" alt="">
-							<div class="overlay">
-								<div class="overlay-caption">
-									<h5>Project Name</h5>
-									<p>Website Design</p>
-								</div>
-							</div>
-							<!-- overlay -->
-						</a>
-					</div>
-					<div class="col-lg-3 col-md-6 col-sm-6 work">
-						<a href="/static/homepage/images/work-2.jpg" class="work-box">
-							<img src="/static/homepage/images/work-2.jpg" alt="">
-							<div class="overlay">
-								<div class="overlay-caption">
-									<h5>Project Name</h5>
-									<p>Website Design</p>
-								</div>
-							</div>
-							<!-- overlay -->
-						</a>
-					</div>
-					<div class="col-lg-3 col-md-6 col-sm-6 work">
-						<a href="/static/homepage/images/work-3.jpg" class="work-box">
-							<img src="/static/homepage/images/work-3.jpg" alt="">
-							<div class="overlay">
-								<div class="overlay-caption">
-									<h5>Project Name</h5>
-									<p>Website Design</p>
-								</div>
-							</div>
-							<!-- overlay -->
-						</a>
-					</div>
-					<div class="col-lg-3 col-md-6 col-sm-6 work">
-						<a href="/static/homepage/images/work-4.jpg" class="work-box">
-							<img src="/static/homepage/images/work-4.jpg" alt="">
-							<div class="overlay">
-								<div class="overlay-caption">
-									<h5>Project Name</h5>
-									<p>Website Design</p>
-								</div>
-							</div>
-							<!-- overlay -->
-						</a>
-					</div>
-					<div class="col-lg-3 col-md-6 col-sm-6 work">
-						<a href="/static/homepage/images/work-5.jpg" class="work-box">
-							<img src="/static/homepage/images/work-5.jpg" alt="">
-							<div class="overlay">
-								<div class="overlay-caption">
-									<h5>Project Name</h5>
-									<p>Website Design</p>
-								</div>
-							</div>
-							<!-- overlay -->
-						</a>
-					</div>
-					<div class="col-lg-3 col-md-6 col-sm-6 work">
-						<a href="/static/homepage/images/work-6.jpg" class="work-box">
-							<img src="/static/homepage/images/work-6.jpg" alt="">
-							<div class="overlay">
-								<div class="overlay-caption">
-									<h5>Project Name</h5>
-									<p>Website Design</p>
-								</div>
-							</div>
-							<!-- overlay -->
-						</a>
-					</div>
-					<div class="col-lg-3 col-md-6 col-sm-6 work">
-						<a href="/static/homepage/images/work-7.jpg" class="work-box">
-							<img src="/static/homepage/images/work-7.jpg" alt="">
-							<div class="overlay">
-								<div class="overlay-caption">
-									<h5>Project Name</h5>
-									<p>Website Design</p>
-								</div>
-							</div>
-							<!-- overlay -->
-						</a>
-					</div>
-					<div class="col-lg-3 col-md-6 col-sm-6 work">
-						<a href="/static/homepage/images/work-8.jpg" class="work-box">
-							<img src="/static/homepage/images/work-8.jpg" alt="">
-							<div class="overlay">
-								<div class="overlay-caption">
-									<h5>Project Name</h5>
-									<p>Website Design</p>
-								</div>
-							</div>
-							<!-- overlay -->
-						</a>
+		</div>
+	</section>
+	<!-- banner -->
+	<section id="features" class="features section">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-4 col-sm-6 feature text-center">
+					<span class="icon icon-tools"></span>
+					<div class="feature-content">
+						<h5>Clean Structure</h5>
+						<p>The front end is built on bootstrap v3 and the backend is powered by Django framework. Standalone webserver Njinx powered the website.</p>
 					</div>
 				</div>
-			</div>
-		</section>
-		<!-- works -->
-
-		<section id="teams" class="section teams">
-			<div class="container">
-				<div class="row">
-					<div class="col-md-3 col-sm-6">
-						<!-- person Fangzhou -->
-						<div class="person">
-							<img src="/static/homepage/images/team-1.jpg" alt="" class="img-responsive">
-							<div class="person-content">
-								<h4>Fangzhou Zhang</h4>
-								<h5 class="role">Team Leader, Frontend Engineer</h5>
-								<p>Current graduate student at ECE department of University of Illinois at Urbana Champaign. I am proficient in front-end development! Proficient in JAVA, Python, C++, MongoDB and so on. Actively search for 2018 summer internship! Please hire me!</p>
-							</div>
-							<ul class="social-icons clearfix">
-								<li><a href="https://www.linkedin.com/in/fzzhang/" class=""><span class="fa fa-linkedin"></span></a></li>
-							</ul>
-						</div>
-
-					</div>
-					<div class="col-md-3 col-sm-6">
-						<!-- person Yu Tao -->
-						<div class="person">
-							<img src="/static/homepage/images/team-2.jpg" alt="" class="img-responsive">
-							<div class="person-content">
-								<h4>Yu Tao</h4>
-								<h5 class="role">Backend Engineer</h5>
-								<p>Current graduate student at ECE department of University of Illinois at Urbana Champaign. I am proficient in back-end development! Proficient in JAVA, Python, C++, MongoDB and so on. Actively search for 2018 summer internship! Please hire me!</p>
-							</div>
-							<ul class="social-icons clearfix">
-								<li><a href="https://www.linkedin.com/in/yu-tao-5a902bba/" class=""><span class="fa fa-linkedin"></span></a></li>
-
-							</ul>
-						</div>
-						
-					</div>
-					<div class="col-md-3 col-sm-6">
-						<!-- person Jie Yin-->
-						<div class="person">
-							<img src="/static/homepage/images/team-3.jpg" alt="" class="img-responsive">
-							<div class="person-content">
-								<h4>Jie Yin</h4>
-								<h5 class="role">Frontend Engineer</h5>
-								<p>Current graduate student at ECE department of University of Illinois at Urbana Champaign. I am proficient in front-end development! Proficient in JAVA, Python, C++, MongoDB and so on. Actively search for 2018 summer internship! Please hire me!</p>
-							</div>
-							<ul class="social-icons clearfix">
-								<li><a href="https://www.linkedin.com/in/jie-yin-940161a7/" class=""><span class="fa fa-linkedin"></span></a></li>
-							</ul>
-						</div>
-						
-					</div>
-					<div class="col-md-3 col-sm-6">
-						<div class="person">
-							<!-- person Haowen -->
-							<img src="/static/homepage/images/team-4.jpg" alt="" class="img-responsive">
-							<div class="person-content">
-								<h4>Haowen Jiang</h4>
-								<h5 class="role">Backend Engineer</h5>
-								<p>Current graduate student at ECE department of University of Illinois at Urbana Champaign. I am proficient in back-end development! Proficient in JAVA, Python, C++, MongoDB and so on. Actively search for 2018 summer internship! Please hire me!</p>
-							</div>
-							<ul class="social-icons clearfix">
-								<li><a href="https://www.linkedin.com/in/haowen-jiang-49b68512a/" class=""><span class="fa fa-linkedin"></span></a></li>
-							</ul>
-						</div>
+				<div class="col-md-4 col-sm-6 feature text-center">
+					<span class="icon icon-desktop"></span>
+					<div class="feature-content">
+						<h5>Adequate Functionality</h5>
+						<p>Sprout is a powerful website, which makes you easily find your favorite restaurant near you according to the rating and others' comments.</p>
 					</div>
 				</div>
-			</div>
-		</section>
-		<!-- teams -->
-		
-
-		<!-- footer -->
-		<footer class="footer">
-			<div class="footer-bottom">
-				<div class="container">
-					<div class="col-md-12">
-						<p>Project2035&nbspof&nbspCS411--All Rights Reserved<br>University of Illinois, Urbana Champaign</p>
+				<div class="col-md-4 col-sm-6 feature text-center">
+					<span class="icon icon-lightbulb"></span>
+					<div class="feature-content">
+						<h5>Intelligence</h5>
+						<p>Powerful recommendation system using artificial intelligence make things even easier. We know what you like and give you the right recommendations.</p>
 					</div>
 				</div>
-			</div>
-		</footer>
-
-
-
-
-		
-		<!--login-->
-		<div class="modal fade login" id="loginModal">
-			<div class="modal-dialog login animated">
-				<div class="modal-content">
-					<div class="modal-header">
-						<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
-						<h4 class="modal-title">Login with</h4>
+				<div class="col-md-4 col-sm-6 feature text-center">
+					<span class="icon icon-genius"></span>
+					<div class="feature-content">
+						<h5>User Centered</h5>
+						<p>Get tired of various advertisements on other webistes? These pain has become the past! Our website is ads-free just for better user experience.</p>
 					</div>
-					<div class="modal-body">
-						<div class="box">
-							<div class="content">
-								<div class="division">
-									<div class="line l"></div>
-									<div class="line r"></div>
-								</div>
-								<div class="error"></div>
-								<div class="form loginBox">
-									<form method="post" action="/login" accept-charset="UTF-8">
-										<input id="email" class="form-control" type="text" placeholder="Email" name="email">
-										<input id="password" class="form-control" type="password" placeholder="Password" name="password">
-										<input class="btn btn-default btn-login" type="button" value="Login" onclick="loginAjax()">
-									</form>
-								</div>
-							</div>
-						</div>
-						<div class="box">
-							<div class="content registerBox" style="display:none;">
-								<div class="form">
-									<form method="post" html="{:multipart=>true}" data-remote="true" action="/register" accept-charset="UTF-8">
-										<input id="email" class="form-control" type="text" placeholder="Email" name="email">
-										<input id="password" class="form-control" type="password" placeholder="Password" name="password">
-										<input id="password_confirmation" class="form-control" type="password" placeholder="Repeat Password" name="password_confirmation">
-										<input class="btn btn-default btn-register" type="submit" value="Create account" name="commit">
-									</form>
-								</div>
-							</div>
-						</div>
+				</div>
+				<div class="col-md-4 col-sm-6 feature text-center">
+					<span class="icon icon-briefcase"></span>
+					<div class="feature-content">
+						<h5>Powerful Database</h5>
+						<p>MariaDB, fork of MySQL, running behind the webiste. Queries can be returnned fast and accurate! Currently, the database is from Yelp and our recoreds is increasing!</p>
 					</div>
-					<div class="modal-footer">
-						<div class="forgot login-footer">
-							<span>Looking to 
-								<a href="javascript: showRegisterForm();">create an account</a>
-							?</span>
-						</div>
-						<div class="forgot register-footer" style="display:none">
-							<span>Already have an account?</span>
-							<a href="javascript: showLoginForm();">Login</a>
-						</div>
+				</div>
+				<div class="col-md-4 col-sm-6 feature text-center">
+					<span class="icon icon-download"></span>
+					<div class="feature-content">
+						<h5>Chat Now</h5>
+						<p>Sprout allows you connect with other user online! You now could share your ideas in real time! Invite your friends to join your dinner tonight online!</p>
 					</div>
 				</div>
 			</div>
 		</div>
+	</section>
+	<!-- features -->
 
-		<!--script -->
-		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-		<script>
-			window.jQuery || document.write('<script src="/static/homepage/js/jquery.min.js"><\/script>')
-		</script>
-		<script src="/static/homepage/js/bootstrap.min.js"></script>
-		<script src="/static/homepage/js/jquery.flexslider-min.js"></script>
-		<script src="/static/homepage/js/jquery.fancybox.pack.js"></script>
-		<script src="/static/homepage/js/jquery.waypoints.min.js"></script>
-		<script src="/static/homepage/js/retina.min.js"></script>
-		<script src="/static/homepage/js/modernizr.js"></script>
-		<script src="/static/homepage/js/main.js"></script>
-	</body>
+	<section id="recommendations" class="works section no-padding">
+		<div class="container-fluid">
+			<div class="row no-gutter">
+				<div class="col-lg-3 col-md-6 col-sm-6 work">
+					<a href="/static/homepage/images/work-1.jpg" class="work-box">
+						<img src="/static/homepage/images/work-1.jpg" alt="">
+						<div class="overlay">
+							<div class="overlay-caption">
+								<h5>Project Name</h5>
+								<p>Website Design</p>
+							</div>
+						</div>
+						<!-- overlay -->
+					</a>
+				</div>
+				<div class="col-lg-3 col-md-6 col-sm-6 work">
+					<a href="/static/homepage/images/work-2.jpg" class="work-box">
+						<img src="/static/homepage/images/work-2.jpg" alt="">
+						<div class="overlay">
+							<div class="overlay-caption">
+								<h5>Project Name</h5>
+								<p>Website Design</p>
+							</div>
+						</div>
+						<!-- overlay -->
+					</a>
+				</div>
+				<div class="col-lg-3 col-md-6 col-sm-6 work">
+					<a href="/static/homepage/images/work-3.jpg" class="work-box">
+						<img src="/static/homepage/images/work-3.jpg" alt="">
+						<div class="overlay">
+							<div class="overlay-caption">
+								<h5>Project Name</h5>
+								<p>Website Design</p>
+							</div>
+						</div>
+						<!-- overlay -->
+					</a>
+				</div>
+				<div class="col-lg-3 col-md-6 col-sm-6 work">
+					<a href="/static/homepage/images/work-4.jpg" class="work-box">
+						<img src="/static/homepage/images/work-4.jpg" alt="">
+						<div class="overlay">
+							<div class="overlay-caption">
+								<h5>Project Name</h5>
+								<p>Website Design</p>
+							</div>
+						</div>
+						<!-- overlay -->
+					</a>
+				</div>
+				<div class="col-lg-3 col-md-6 col-sm-6 work">
+					<a href="/static/homepage/images/work-5.jpg" class="work-box">
+						<img src="/static/homepage/images/work-5.jpg" alt="">
+						<div class="overlay">
+							<div class="overlay-caption">
+								<h5>Project Name</h5>
+								<p>Website Design</p>
+							</div>
+						</div>
+						<!-- overlay -->
+					</a>
+				</div>
+				<div class="col-lg-3 col-md-6 col-sm-6 work">
+					<a href="/static/homepage/images/work-6.jpg" class="work-box">
+						<img src="/static/homepage/images/work-6.jpg" alt="">
+						<div class="overlay">
+							<div class="overlay-caption">
+								<h5>Project Name</h5>
+								<p>Website Design</p>
+							</div>
+						</div>
+						<!-- overlay -->
+					</a>
+				</div>
+				<div class="col-lg-3 col-md-6 col-sm-6 work">
+					<a href="/static/homepage/images/work-7.jpg" class="work-box">
+						<img src="/static/homepage/images/work-7.jpg" alt="">
+						<div class="overlay">
+							<div class="overlay-caption">
+								<h5>Project Name</h5>
+								<p>Website Design</p>
+							</div>
+						</div>
+						<!-- overlay -->
+					</a>
+				</div>
+				<div class="col-lg-3 col-md-6 col-sm-6 work">
+					<a href="/static/homepage/images/work-8.jpg" class="work-box">
+						<img src="/static/homepage/images/work-8.jpg" alt="">
+						<div class="overlay">
+							<div class="overlay-caption">
+								<h5>Project Name</h5>
+								<p>Website Design</p>
+							</div>
+						</div>
+						<!-- overlay -->
+					</a>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- works -->
 
-	</html>
+	<section id="teams" class="section teams">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-3 col-sm-6">
+					<!-- person Fangzhou -->
+					<div class="person">
+						<img src="/static/homepage/images/team-1.jpg" alt="" class="img-responsive">
+						<div class="person-content">
+							<h4>Fangzhou Zhang</h4>
+							<h5 class="role">Team Leader, Frontend Engineer</h5>
+							<p>Current graduate student at ECE department of University of Illinois at Urbana Champaign. I am proficient in front-end development! Proficient in JAVA, Python, C++, MongoDB and so on. Actively search for 2018 summer internship! Please hire me!</p>
+						</div>
+						<ul class="social-icons clearfix">
+							<li><a href="https://www.linkedin.com/in/fzzhang/" class=""><span class="fa fa-linkedin"></span></a></li>
+						</ul>
+					</div>
+
+				</div>
+				<div class="col-md-3 col-sm-6">
+					<!-- person Yu Tao -->
+					<div class="person">
+						<img src="/static/homepage/images/team-2.jpg" alt="" class="img-responsive">
+						<div class="person-content">
+							<h4>Yu Tao</h4>
+							<h5 class="role">Backend Engineer</h5>
+							<p>Current graduate student at ECE department of University of Illinois at Urbana Champaign. I am proficient in back-end development! Proficient in JAVA, Python, C++, MongoDB and so on. Actively search for 2018 summer internship! Please hire me!</p>
+						</div>
+						<ul class="social-icons clearfix">
+							<li><a href="https://www.linkedin.com/in/yu-tao-5a902bba/" class=""><span class="fa fa-linkedin"></span></a></li>
+
+						</ul>
+					</div>
+
+				</div>
+				<div class="col-md-3 col-sm-6">
+					<!-- person Jie Yin-->
+					<div class="person">
+						<img src="/static/homepage/images/team-3.jpg" alt="" class="img-responsive">
+						<div class="person-content">
+							<h4>Jie Yin</h4>
+							<h5 class="role">Frontend Engineer</h5>
+							<p>Current graduate student at ECE department of University of Illinois at Urbana Champaign. I am proficient in front-end development! Proficient in JAVA, Python, C++, MongoDB and so on. Actively search for 2018 summer internship! Please hire me!</p>
+						</div>
+						<ul class="social-icons clearfix">
+							<li><a href="https://www.linkedin.com/in/jie-yin-940161a7/" class=""><span class="fa fa-linkedin"></span></a></li>
+						</ul>
+					</div>
+
+				</div>
+				<div class="col-md-3 col-sm-6">
+					<div class="person">
+						<!-- person Haowen -->
+						<img src="/static/homepage/images/team-4.jpg" alt="" class="img-responsive">
+						<div class="person-content">
+							<h4>Haowen Jiang</h4>
+							<h5 class="role">Backend Engineer</h5>
+							<p>Current graduate student at ECE department of University of Illinois at Urbana Champaign. I am proficient in back-end development! Proficient in JAVA, Python, C++, MongoDB and so on. Actively search for 2018 summer internship! Please hire me!</p>
+						</div>
+						<ul class="social-icons clearfix">
+							<li><a href="https://www.linkedin.com/in/haowen-jiang-49b68512a/" class=""><span class="fa fa-linkedin"></span></a></li>
+						</ul>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- teams -->
+
+
+	<!-- footer -->
+	<footer class="footer">
+		<div class="footer-bottom">
+			<div class="container">
+				<div class="col-md-12">
+					<p>Project2035&nbspof&nbspCS411--All Rights Reserved<br>University of Illinois, Urbana Champaign</p>
+				</div>
+			</div>
+		</div>
+	</footer>
+
+
+
+
+
+	<!--login-->
+	<div class="modal fade login" id="loginModal">
+		<div class="modal-dialog login animated">
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+					<h4 class="modal-title">Login with</h4>
+				</div>
+				<div class="modal-body">
+					<div class="box">
+						<div class="content">
+							<div class="division">
+								<div class="line l"></div>
+								<div class="line r"></div>
+							</div>
+							<div class="error"></div>
+							<div class="form loginBox">
+								<form method="post" action="/login" accept-charset="UTF-8">
+									<input id="email" class="form-control" type="text" placeholder="Email" name="email">
+									<input id="password" class="form-control" type="password" placeholder="Password" name="password">
+									<input class="btn btn-default btn-login" type="button" value="Login" onclick="loginAjax()">
+								</form>
+							</div>
+						</div>
+					</div>
+					<div class="box">
+						<div class="content registerBox" style="display:none;">
+							<div class="form">
+								<form method="post" html="{:multipart=>true}" data-remote="true" action="/register" accept-charset="UTF-8">
+									<input id="email" class="form-control" type="text" placeholder="Email" name="email">
+									<input id="password" class="form-control" type="password" placeholder="Password" name="password">
+									<input id="password_confirmation" class="form-control" type="password" placeholder="Repeat Password" name="password_confirmation">
+									<input class="btn btn-default btn-register" type="submit" value="Create account" name="commit">
+								</form>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+					<div class="forgot login-footer">
+						<span>Looking to 
+							<a href="javascript: showRegisterForm();">create an account</a>
+						?</span>
+					</div>
+					<div class="forgot register-footer" style="display:none">
+						<span>Already have an account?</span>
+						<a href="javascript: showLoginForm();">Login</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<!--script -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+	<script>
+		window.jQuery || document.write('<script src="/static/homepage/js/jquery.min.js"><\/script>')
+	</script>
+	<script src="/static/homepage/js/bootstrap.min.js"></script>
+	<script src="/static/homepage/js/jquery.flexslider-min.js"></script>
+	<script src="/static/homepage/js/jquery.fancybox.pack.js"></script>
+	<script src="/static/homepage/js/jquery.waypoints.min.js"></script>
+	<script src="/static/homepage/js/retina.min.js"></script>
+	<script src="/static/homepage/js/modernizr.js"></script>
+	<script src="/static/homepage/js/main.js"></script>
+</body>
+
+</html>
