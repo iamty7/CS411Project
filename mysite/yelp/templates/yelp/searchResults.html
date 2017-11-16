@@ -96,7 +96,7 @@
 						<ul class="primary-nav">
 							<li>City:{{business.city}}</li>
 							<li>
-								<div class="<div class="my-rating jq-stars {{business.name}}"></div>"></div>
+								<div class="<div class="my-rating jq-stars {{business.id}}"></div>">
 							</li>
 						</ul>
 					</p>
@@ -120,7 +120,7 @@
 						<ul class="primary-nav">
 							<li>City:{{business.city}}</li>
 							<li>
-								<div class="<div class="my-rating jq-stars {{business.name}}"></div>"></div>
+								<div class="<div class="my-rating jq-stars {{business.id}}"></div>">
 							</li>
 						</ul>
 					</p>
@@ -143,7 +143,7 @@
 						<ul class="primary-nav">
 							<li>City:{{business.city}}</li>
 							<li>
-								<div class="<div class="my-rating jq-stars {{business.name}}"></div>"></div>
+								<div class="<div class="my-rating jq-stars {{business.id}}"></div>">
 							</li>
 						</ul>
 					</p>
@@ -214,8 +214,8 @@
 		{% for business in business_list %}
 			$(function() {
     // basic use comes with defaults values
-   	    	$(".{{business.name}}").starRating({
-       		 initialRating: {{business.stars}},
+   	    	$(".{{business.id}}").starRating({
+       		initialRating: {{business.stars}},
         	starSize: 25,
         	readOnly:true
     		});
