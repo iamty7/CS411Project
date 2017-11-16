@@ -26,6 +26,15 @@
 
 	</head>
 
+	<style>
+		h4{
+		    white-space: nowrap; 
+   		    width: 17em; 
+    		overflow: hidden;
+    		text-overflow: ellipsis; 
+		  }
+	</style>
+
 	<body>
 
 		<!-- Navigation -->
@@ -89,14 +98,14 @@
 					<a href="#">
 						<img class="img-responsive" src="/static/homepage/images/fig/7.jpg" alt="">
 					</a>
-					<h3>
+					<h4>
 	                    <a href="{% url 'business-detail' business.id %}">{{business.name}}<a>
-	                </h3>
+	                </h4>
 					<p>
 						<ul class="primary-nav">
-							<li>City:{{business.city}}</li>
+							<li><font size=4>City:{{business.city}}</font></li>
 							<li>
-								<div class="my-rating jq-stars {{business.id}}"></div>
+								<div class="my-rating jq-stars" style=padding-top:10px;></div>
 							</li>
 						</ul>
 					</p>
@@ -113,14 +122,14 @@
 					<a href="#">
 						<img class="img-responsive" src="/static/homepage/images/fig/8.jpg" alt="">
 					</a>
-					<h3>
+					<h4>
 		                    <a href="{% url 'business-detail' business.id %}">{{business.name}}<a>
-		                </h3>
+		                </h4>
 					<p>
 						<ul class="primary-nav">
-							<li>City:{{business.city}}</li>
+							<li><font size=4>City:{{business.city}}</font></li>
 							<li>
-								<div class="my-rating jq-stars {{business.id}}"></div>
+								<div class="my-rating jq-stars" style=padding-top:10px;></div>
 							</li>
 						</ul>
 					</p>
@@ -136,14 +145,14 @@
 					<a href="#">
 						<img class="img-responsive" src="/static/homepage/images/fig/9.jpg" alt="">
 					</a>
-					<h3>
+					<h4>
 		                    <a href="{% url 'business-detail' business.id %}">{{business.name}}<a>
-		                </h3>
+		                </h4>
 					<p>
 						<ul class="primary-nav">
-							<li>City:{{business.city}}</li>
+							<li><font size=4>City:{{business.city}}</font></li>
 							<li>
-								<div class="my-rating jq-stars {{business.id}}"></div>
+								<div class="my-rating jq-stars" style=padding-top:10px;></div>
 							</li>
 						</ul>
 					</p>
