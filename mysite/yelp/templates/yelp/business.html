@@ -113,13 +113,14 @@
         <div class="content-item" id="comments">   
             <div class="row" content-item>
                 <div class="col-md-12">   
-                    <h3>4 Comments</h3>
+                    <h3>{{ business.comment_set.count }} Comments</h3>
                     <!-- comment starts -->
                     {% if business.comment_set.count %} {% for comment in business.comment_set.all %}
                     <div class="media">
                         <a class="pull-left" href="#"><img class="media-object" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt=""></a>
                         <div class="media-body">
                             <form method="post" name="commentform">
+                                {% csrf_token %}
                                 <input type="hidden" name="comment_id" value="{{comment.id}}">
                                 <h4 class="media-heading">{{comment.user}}</h4>
                                 <p name="comment_text">{{comment.comment_text}}</p>
@@ -188,7 +189,7 @@
                 <form method="post" action="/updateComment/">
                     {% csrf_token %}
                     <div class="modal-body">
-                        <input type="hidden" name="business_id" value="{{  business.id }}">
+                        <input type="hidden" name="comment_id" value="{{  comment.id }}">
                         <textarea class="form-control" rows="5" name="comment_text"></textarea>
 
                     </div>
