@@ -1,80 +1,78 @@
 <!DOCTYPE html>
 <html lang="en">
 
-	<head>
+<head>
 
-		<meta charset="utf-8">
-		<meta http-equiv="X-UA-Compatible" content="IE=edge">
-		<meta name="viewport" content="width=device-width, initial-scale=1">
-		<meta name="description" content="">
-		<meta name="author" content="">
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta name="description" content="">
+	<meta name="author" content="">
 
-		<title>Sprout</title>
+	<title>Sprout</title>
 
-		<link href="/static/homepage/css/bootstrap.min.css" rel="stylesheet">
-		<link rel="stylesheet" href="/static/homepage/font-awesome/css/font-awesome.min.css">
-		<link href="/static/homepage/css/star-rating.min.css" media="all" rel="stylesheet" type="text/css" />
-		<link rel="stylesheet" href="/static/homepage/css/main.css">
-		<link rel="stylesheet" type="text/css" href="/static/homepage/css/star-rating-svg.css">
+	<link href="/static/homepage/css/bootstrap.min.css" rel="stylesheet">
+	<link rel="stylesheet" href="/static/homepage/font-awesome/css/font-awesome.min.css">
+	<link href="/static/homepage/css/star-rating.min.css" media="all" rel="stylesheet" type="text/css" />
+	<link rel="stylesheet" href="/static/homepage/css/main.css">
+	<link rel="stylesheet" type="text/css" href="/static/homepage/css/star-rating-svg.css">
 
-		<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
-		<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+	<!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+	<!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
 		<!--[if lt IE 9]>
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-	</head>
+</head>
 
-	<style>
-		h4{
-		    white-space: nowrap; 
-   		    width: 17em; 
-    		overflow: hidden;
-    		text-overflow: ellipsis; 
-		  }
-	</style>
+<style>
+h4{
+	white-space: nowrap; 
+	width: 17em; 
+	overflow: hidden;
+	text-overflow: ellipsis; 
+}
+</style>
 
-	<body>
+<body>
 
-		<!-- Navigation -->
-		<nav class="navbar navbar-fixed-top" style="background-color: #292c47; role=" navigation">
-			<div class="container">
-				<!--Brand and toggle get grouped for better mobile display -->
-				<div class="navbar-header">
-					<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                    <span class="sr-only">Toggle navigation</span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                    <span class="icon-bar"></span>
-                </button>
-					<a class="navbar-brand" href="{% url 'home' %}">
-						<font size="5"><strong>Sprout</strong></font>
-					</a>
-				</div>
-				<!-- Collect the nav links, forms, and other content for toggling -->
-					<nav class="navigation" role="navigation" style = padding-top:15px;>
-						<ul class="primary-nav">
-							<li><a href="index.html#features">Features</a></li>
-							<li><a href="index.html#recommendations">Recommendation</a></li>
-							<li><a href="index.html#teams">Team</a></li>
-							<li><a data-toggle="modal" href="javascript:void(0)" onclick="openLoginModal();">Log in</a>
-							<li><a data-toggle="modal" href="javascript:void(0)" onclick="openRegisterModal();">Register</a>
-						</ul>
-					</nav>
-			
-				<!-- /.navbar-collapse -->
+	<!-- Navigation -->
+	<nav class="navbar navbar-fixed-top navigation" style="background-color: #292c47; role=" navigation">
+		<div class="container">
+			<!--Brand and toggle get grouped for better mobile display -->
+			<div class="navbar-header">
+				<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+					<span class="sr-only">Toggle navigation</span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+					<span class="icon-bar"></span>
+				</button>
+				<a class="navbar-brand" href="{% url 'home' %}">
+					<font size="5" color="#e84545"><strong>Sprout</strong></font>
+				</a>
 			</div>
-			<!-- /.container -->
-		</nav>
+			<!-- Collect the nav links, forms, and other content for toggling -->
 
-		<!-- Page Content -->
-		<div class="container" style=padding-top:30px ;>
+			<ul class="primary-nav pull-right" style="padding-top:15px;">
+				<li><a href="{% url 'home' %}">Features</a></li>
+				<li><a href="{% url 'home' %}">Recommendation</a></li>
+				<li><a href="{% url 'home' %}">Team</a></li>
+				<li><a data-toggle="modal" href="javascript:void(0)" onclick="openLoginModal();">Log in</a></li>
+				<li><a data-toggle="modal" href="javascript:void(0)" onclick="openRegisterModal();">Register</a></li>
+			</ul>
+			<!-- /.navbar-collapse -->
+		</div>
+		<!-- /.container -->
+	</nav>
+
+	<!-- Page Content -->
+	<div class="container" style=padding-top:30px ;>
+		<!-- navigation bar -->
 		<div class="col-lg-12">
-			<!-- Page Header -->
 			<div class="row">
 				<h3 class=page-header>
-              		<form action="/search/" method="post" class="form-inline";>
+					<form action="/search/" method="post" class="form-inline";>
 						{% csrf_token %}
 						<div class="form-group">
 							<input type="search" class="form-control" placeholder="burgers, chinese food..." name="keyword">
@@ -84,153 +82,149 @@
 						</div>
 						<input type="submit" class="btn" value="Search">
 					</form>
-					</h3>
-				</div>
+				</h3>
 			</div>
-			<!-- /.row -->
+		</div>
+		<!-- /.row -->
 
-			{% if business_list %}
+		{% if business_list %}
 
-			<!-- Projects Row -->
-			<div class="row">
-				{% for business in business_list|slice:"0:3" %}
-				<div class="col-md-4 portfolio-item">
-					<a href="#">
-						<img class="img-responsive" src="/static/homepage/images/fig/7.jpg" alt="">
-					</a>
-					<h4>
-	                    <a href="{% url 'business-detail' business.id %}">{{business.name}}<a>
-	                </h4>
-					<p>
-						<ul class="primary-nav">
-							<li><font size=4>City:{{business.city}}</font></li>
-							<li>
-								<div class="my-rating jq-stars {{business.id}}"style="padding-top:10px;"></div>
-							</li>
-						</ul>
-					</p>
-				</div>
-				{% endfor %}
-			</div>
-			<!-- /.row -->
-
-			{% if business_list.count > 3 %}
-			<!-- Projects Row -->
-			<div class="row">
-				{% for business in business_list|slice:"3:6" %}
-				<div class="col-md-4 portfolio-item">
-					<a href="#">
-						<img class="img-responsive" src="/static/homepage/images/fig/8.jpg" alt="">
-					</a>
-					<h4>
-		                    <a href="{% url 'business-detail' business.id %}">{{business.name}}<a>
-		                </h4>
-					<p>
-						<ul class="primary-nav">
-							<li><font size=4>City:{{business.city}}</font></li>
-							<li>
-								<div class="my-rating jq-stars {{business.id}}" style="padding-top:10px;"></div>
-							</li>
-						</ul>
-					</p>
-				</div>
-				{% endfor %}
-			</div>
-			<!-- /.row -->
-			{% endif %} {% if business_list.count > 6 %}
-			<!-- Projects Row -->
-			<div class="row">
-				{% for business in business_list|slice:"6:9" %}
-				<div class="col-md-4 portfolio-item">
-					<a href="#">
-						<img class="img-responsive" src="/static/homepage/images/fig/9.jpg" alt="">
-					</a>
-					<h4>
-		                    <a href="{% url 'business-detail' business.id %}">{{business.name}}<a>
-		                </h4>
-					<p>
-						<ul class="primary-nav">
-							<li><font size=4>City:{{business.city}}</font></li>
-							<li>
-								<div class="my-rating jq-stars {{business.id}}"style="padding-top:10px;"></div>
-							</li>
-						</ul>
-					</p>
-				</div>
-				{% endfor %}
-			</div>
-			<!-- /.row -->
-			{% endif %} {% else %}
-			<p>No results found.</p>
-			{% endif %}
-
-			<hr>
-
-			<!-- Pagination -->
-			<div class="row text-center">
-				<div class="col-lg-12">
-					<ul class="pagination">
+		<!-- Projects Row -->
+		<div class="row">
+			{% for business in business_list|slice:"0:3" %}
+			<div class="col-md-4 portfolio-item">
+				<a href="#">
+					<img class="img-responsive" src="/static/homepage/images/fig/7.jpg" alt="">
+				</a>
+				<h4>
+					<a href="{% url 'business-detail' business.id %}">{{business.name}}</a>
+				</h4>
+				<p>
+					<ul class="primary-nav">
+						<li><font size=4>City:{{business.city}}</font></li>
 						<li>
-							<a href="#">&laquo;</a>
-						</li>
-						<li class="active">
-							<a href="#">1</a>
-						</li>
-						<li>
-							<a href="#">2</a>
-						</li>
-						<li>
-							<a href="#">3</a>
-						</li>
-						<li>
-							<a href="#">4</a>
-						</li>
-						<li>
-							<a href="#">5</a>
-						</li>
-						<li>
-							<a href="#">&raquo;</a>
+							<div class="my-rating jq-stars {{business.id}}"style="padding-top:10px;"></div>
 						</li>
 					</ul>
-				</div>
+				</p>
 			</div>
-			<!-- /.row -->
-
-			<hr>
+			{% endfor %}
 		</div>
-		<!-- Footer -->
-		<footer class="footer">
-			<div class="footer-bottom">
-				<div class="container">
-					<div class="col-md-12">
-						<p>Project2035&nbspof&nbspCS411--All Rights Reserved<br>University of Illinois, Urbana Champaign</p>
-					</div>
+		<!-- /.row -->
+
+		{% if business_list.count > 3 %}
+		<!-- Projects Row -->
+		<div class="row">
+			{% for business in business_list|slice:"3:6" %}
+			<div class="col-md-4 portfolio-item">
+				<a href="#">
+					<img class="img-responsive" src="/static/homepage/images/fig/8.jpg" alt="">
+				</a>
+				<h4>
+					<a href="{% url 'business-detail' business.id %}">{{business.name}}</a>
+				</h4>
+				<p>
+					<ul class="primary-nav">
+						<li><font size=4>City:{{business.city}}</font></li>
+						<li>
+							<div class="my-rating jq-stars {{business.id}}" style="padding-top:10px;"></div>
+						</li>
+					</ul>
+				</p>
+			</div>
+			{% endfor %}
+		</div>
+		<!-- /.row -->
+		{% endif %} {% if business_list.count > 6 %}
+		<!-- Projects Row -->
+		<div class="row">
+			{% for business in business_list|slice:"6:9" %}
+			<div class="col-md-4 portfolio-item">
+				<a href="#">
+					<img class="img-responsive" src="/static/homepage/images/fig/9.jpg" alt="">
+				</a>
+				<h4><a href="{% url 'business-detail' business.id %}">{{business.name}}</a></h4>
+				<p>
+					<ul class="primary-nav">
+						<li><font size=4>City:{{business.city}}</font></li>
+						<li>
+							<div class="my-rating jq-stars {{business.id}}"style="padding-top:10px;"></div>
+						</li>
+					</ul>
+				</p>
+			</div>
+			{% endfor %}
+		</div>
+		<!-- /.row -->
+		{% endif %} {% else %}
+		<p>No results found.</p>
+		{% endif %}
+
+		<hr>
+
+		<!-- Pagination -->
+		<div class="row text-center">
+			<div class="col-lg-12">
+				<ul class="pagination">
+					<li>
+						<a href="#">&laquo;</a>
+					</li>
+					<li class="active">
+						<a href="#">1</a>
+					</li>
+					<li>
+						<a href="#">2</a>
+					</li>
+					<li>
+						<a href="#">3</a>
+					</li>
+					<li>
+						<a href="#">4</a>
+					</li>
+					<li>
+						<a href="#">5</a>
+					</li>
+					<li>
+						<a href="#">&raquo;</a>
+					</li>
+				</ul>
+			</div>
+		</div>
+		<!-- /.row -->
+
+		<hr>
+	</div>
+	<!-- Footer -->
+	<footer class="footer">
+		<div class="footer-bottom">
+			<div class="container">
+				<div class="col-md-12">
+					<p>Project2035&nbspof&nbspCS411--All Rights Reserved<br>University of Illinois, Urbana Champaign</p>
 				</div>
 			</div>
-		</footer>
+		</div>
+	</footer>
 
-		<!-- /.container -->
+	<!-- /.container -->
 
-		<!-- jQuery -->
-		<script src="/static/homepage/js/jquery.min.js"></script>
+	<!-- jQuery -->
+	<script src="/static/homepage/js/jquery.min.js"></script>
 
-		<!-- Bootstrap Core JavaScript -->
-		<script src="/static/homepage/js/bootstrap.min.js" type="text/javascript"></script>
+	<!-- Bootstrap Core JavaScript -->
+	<script src="/static/homepage/js/bootstrap.min.js" type="text/javascript"></script>
 
-		<!-- star-->
-		<script src="/static/homepage/js/jquery.star-rating-svg.js" type="text/javascript"></script>
-		<script>
+	<!-- star-->
+	<script src="/static/homepage/js/jquery.star-rating-svg.js" type="text/javascript"></script>
+	<script>
 		{% for business in business_list %}
-			$(function() {
-    // basic use comes with defaults values
-   	    	$(".{{business.id}}").starRating({
-       		initialRating: {{business.stars}},
-        	starSize: 25,
-        	readOnly:true
-    		});
+		$(function() {
+			$(".{{business.id}}").starRating({
+				initialRating: {{business.stars}},
+				starSize: 25,
+				readOnly:true
+			});
 		});
 		{% endfor %}
-		</script>
-	</body>
-
+	</script>
+</body>
 </html>
