@@ -93,10 +93,10 @@
             </div>
             <!-- /.col-md-8 -->
             <div class="col-md-3">
-                <h3 style=padding-top:20px;>{{ business.name }}</h3>
+                <h3 style=padding-top:20px;>{{business.name }}</h3>
                 <p>Address: {{ business.address }}</p>
-                <p>City: {{ business.city }}</p>
-                <p>State: {{ business.state }}</p>
+                <p>City: {{business.city }}</p>
+                <p>State: {{business.state }}</p>
                 <p><div class="my-rating jq-stars {{business.id}}"></div></p>
                 <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" >Write a comment</button>
             </div>
@@ -111,7 +111,7 @@
         <div class="content-item" id="comments">   
             <div class="row" content-item>
                 <div class="col-md-12">   
-                    <h3>4 Comments</h3>
+                    <h3>{{business.comment_set.count}} Comments</h3>
                     <!-- comment starts -->
                     {% if business.comment_set.count %} {% for comment in business.comment_set.all %}
                     <div class="media">
