@@ -105,22 +105,19 @@
     </div>
     <!-- /.row -->
 
-
-
-
+    <!-- Content Row -->
     <!-- Content Row -->
     <div class="container" style="padding-top:30px;">  
         <div class="content-item" id="comments">   
             <div class="row" content-item>
                 <div class="col-md-12">   
-                    <h3>{{ business.comment_set.count }} Comments</h3>
+                    <h3>4 Comments</h3>
                     <!-- comment starts -->
                     {% if business.comment_set.count %} {% for comment in business.comment_set.all %}
                     <div class="media">
                         <a class="pull-left" href="#"><img class="media-object" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt=""></a>
                         <div class="media-body">
                             <form method="post" name="commentform">
-                                {% csrf_token %}
                                 <input type="hidden" name="comment_id" value="{{comment.id}}">
                                 <h4 class="media-heading">{{comment.user}}</h4>
                                 <p name="comment_text">{{comment.comment_text}}</p>
@@ -128,7 +125,7 @@
                                     <li><i class="fa fa-calendar"></i>{{comment.comm_date}}</li>
                                 </ul>
                                 <ul class="list-unstyled list-inline media-detail pull-right">
-                                    <li class=""><input type="button" value="Update" class="btn btn-default" data-toggle="modal" data-target="#{{comment.id}}updateModal"></li>
+                                    <li class=""><input type="button" value="Update" class="btn btn-default" data-toggle="modal" data-target="#{comment.id}updateModal"></li>
                                     <li class=""><input type="submit" value="Delete" formaction="/deleteComment/" class="btn btn-default"></li>
                                 </ul>
                             </form>
@@ -142,9 +139,10 @@
             </div>
         </div>
     </div>
+
     <!-- /.row -->
     <!-- 模态框（Modal） -->
-    
+
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
