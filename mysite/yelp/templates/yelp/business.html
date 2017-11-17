@@ -118,6 +118,7 @@
                         <a class="pull-left" href="#"><img class="media-object" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt=""></a>
                         <div class="media-body">
                             <form method="post" name="commentform">
+                                {% csrf_token %}
                                 <input type="hidden" name="comment_id" value="{{comment.id}}">
                                 <h4 class="media-heading">{{comment.user}}</h4>
                                 <p name="comment_text">{{comment.comment_text}}</p>
