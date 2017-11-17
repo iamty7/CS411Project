@@ -99,6 +99,7 @@ body{margin-top:20px;}
 #comments .media p {
     margin-bottom:15px;
     text-align:left;
+    word-wrap: break-word;
 }
 
 #comments .media-detail {
