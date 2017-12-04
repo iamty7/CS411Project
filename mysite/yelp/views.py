@@ -4,6 +4,7 @@ from __future__ import unicode_literals
 from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse, Http404
 from django.utils import timezone
+from django.views.decorators.csrf import csrf_exempt
 
 from .models import Business, User, Comment
 # Create your views here.
@@ -26,6 +27,14 @@ def search_business(request):
 	business_list = Business.objects.filter(name__icontains = keyword)[0:9]
 	return render(request, 'yelp/searchResults.html', {'business_list': business_list, 'error_msg': error_msg})
 
+@csrf_exempt
+def search_suggestion(request):
+	keyword = request.POST.get('keyword')
+	business_list = Business.objects.filter(name__icontains = keyword)
+	rejson = []
+    for business in business_list:
+        rejson.append(business.name)
+    return HttpResponse(json.dumps(rejson), content_type='application/json')
 
 def business_detail(request, business_id):
 	try:

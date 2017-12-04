@@ -56,7 +56,8 @@
 						<form action="/search/" class=" form-inline" method="post">
 							{% csrf_token %}
 							<div class="form-group">
-								<input type="search" class="form-control" placeholder="burgers, chinese food..." name="keyword">
+								<input type="search" class="form-control" placeholder="burgers, chinese food..." name="keyword" id="searchbar">
+								<p><span id='search-suggestion'></span></p>
 							</div>
 							<div class="form-group">
 								<input type="search" class="form-control" placeholder="city..." name="city">
@@ -362,6 +363,27 @@
 	</div>
 
 	<!--script -->
+
+	<!--search suggestion-->
+	<script>
+    $(document).ready(function(){
+      $("#searchbar").keyup(function(){
+        var keyword = $("#searchbar").val();
+        $.ajax({
+            type:"POST",
+            url:"/searchsuggestion",
+            data:{"keyword":keyword},
+            data-type:"json",
+            success: function(suggestion){
+                    for (var i = data.length - 1; i >= 0; i--) {        
+                    	$('#search-result').append(data[i]+'<br/>')
+                 	};
+        	}      
+        })
+      });
+    });
+    </script>
+
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script>
 		window.jQuery || document.write('<script src="/static/homepage/js/jquery.min.js"><\/script>')
