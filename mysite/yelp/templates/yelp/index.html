@@ -419,26 +419,34 @@
     </style>
     <script>
         $(document).ready(function(){
-                $("#searchbar").on("input",function(){
-			$("#re").html("");
-                    $("#re").css("display","none");
+            $("#searchbar").on("input",function(){
+				$("#re").html("");
+                $("#re").css("display","none");
                     //var url = "searchsuggestion?keyword=" + jQuery.trim($("#searchbar").val());
-			var keyword = $("#searchbar").val();
-                    if(jQuery.trim($("#searchbar").val()) != ''){
-                        $.get("/searchsuggestion/",{'keyword':keyword}, function(data){    
-	                 for (var i = data.length - 1; i >= 0; i--) {        
-        	             $('#re').append('<span class="suggestion">' + data[i] +'</span>' +'<br/>');
-			     $("#re").css("display","block");
-                	 }
-            		 }) 
+				var keyword = $("#searchbar").val();
+                if(jQuery.trim($("#searchbar").val()) != ''){
+                    $.get("/searchsuggestion/",{'keyword':keyword}, function(data){    
+	                	for (var i = data.length - 1; i >= 0; i--) {        
+        	            	$('#re').append('<span class="suggestion">' + data[i] +'</span>' +'<br/>');
+			     			$("#re").css("display","block");
+                	 	}
+            		}) 
 
-		     }
-                    });
-		$(document).on('click','.suggestion',function(){
-			var word = $(this).text();
-			$('#searchbar').val(word);
-			// $('#texe').trigger('click');触发搜索事件
-		})
+		    	}
+        	});
+		
+			$(document).on('click','.suggestion',function(){
+				var word = $(this).text();
+				$('#searchbar').val(word);
+			// $('#texe').trigger('click');
+			})
+
+			$('#searchbar').keydown(function(){
+            	$('#re').empty();
+         	})
+         	$('#searchbar').blur(function(){
+            	$('#re').empty();
+         	})
                 
         });
     </script>
