@@ -7,6 +7,7 @@ from django.utils import timezone
 from django.views.decorators.csrf import csrf_exempt
 
 from .models import Business, User, Comment
+import json
 # Create your views here.
 
 
@@ -27,14 +28,16 @@ def search_business(request):
 	business_list = Business.objects.filter(name__icontains = keyword)[0:9]
 	return render(request, 'yelp/searchResults.html', {'business_list': business_list, 'error_msg': error_msg})
 
-@csrf_exempt
+#@csrf_exempt
 def search_suggestion(request):
-	keyword = request.POST.get('keyword')
-	business_list = Business.objects.filter(name__icontains = keyword)
-	rejson = []
-    for business in business_list:
-        rejson.append(business.name)
-    return HttpResponse(json.dumps(rejson), content_type='application/json')
+	keyword = request.GET.get('keyword')
+	if keyword:
+		business_list = Business.objects.filter(name__icontains = keyword)[0:5]
+		rejson = []
+		for business in business_list:
+        		rejson.append(business.name)
+    		return HttpResponse(json.dumps(rejson), content_type='application/json')
+		#return HttpResponse(rejson)
 
 def business_detail(request, business_id):
 	try:

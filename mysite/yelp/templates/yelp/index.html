@@ -57,14 +57,18 @@
 							{% csrf_token %}
 							<div class="form-group">
 								<input type="search" class="form-control" placeholder="burgers, chinese food..." name="keyword" id="searchbar">
-								<p><span id='search-suggestion'></span></p>
+								
+								<!--<p><span id='search-suggestion'></span></p>
+								-->
 							</div>
 							<div class="form-group">
-								<input type="search" class="form-control" placeholder="city..." name="city">
+								<input type="search" class="form-control" placeholder="city..." name="city" id="city">
 							</div>
 							<input type="submit" class="btn" value="Search">
 						</form>
 					</div>
+					<ul id="re">
+    </ul>
 				</div>
 				<!-- banner text -->
 			</div>
@@ -365,23 +369,78 @@
 	<!--script -->
 
 	<!--search suggestion-->
-	<script>
+
+<script>
+/*
     $(document).ready(function(){
       $("#searchbar").keyup(function(){
-        var keyword = $("#searchbar").val();
-        $.ajax({
-            type:"POST",
-            url:"/searchsuggestion",
-            data:{"keyword":keyword},
-            data-type:"json",
-            success: function(suggestion){
-                    for (var i = data.length - 1; i >= 0; i--) {        
-                    	$('#search-result').append(data[i]+'<br/>')
-                 	};
-        	}      
-        })
+	var keyword = $("#searchbar").val();
+	$.get("/searchsuggestion/",{'keyword':keyword}, function(data){    
+                 for (var i = data.length - 1; i >= 0; i--) {        
+                     $('#search-suggestion').append(data[i]+'<br/>');
+                 };
+             }) 
+	//$.ajax({
+        //    type:"POST",
+        //    url:"/searchsuggestion/",
+        //    data:{"keyword":keyword},
+        //    data-type:"json",
+        //    success: function(suggestions){
+        //            for (var i = suggestions.length - 1; i >= 0; i--) {        
+        //            	$('#search-result').append(suggestions[i]+'<br/>')
+        //         	};
+        //	}      
+        //})
       });
+	 $('#searchbar').keydown(function(){
+             $('#search-suggestion').empty();
+         })
+         $('#searchbar').blur(function(){
+             $('#search-suggestion').empty();
+         })
     });
+*/
+</script>
+
+    <style type="text/css">
+        #re{
+            //border: 1px solid #666666;
+            border-top: none;
+            width: auto;
+	    //top: 40px;
+            margin: 10px auto;
+            padding: 5px;
+            display: none;
+            list-style: none;
+	    background-color: white;
+	    border-radius:4px;
+	    max-width: 455px;
+        }
+    </style>
+    <script>
+        $(document).ready(function(){
+                $("#searchbar").on("input",function(){
+			$("#re").html("");
+                    $("#re").css("display","none");
+                    //var url = "searchsuggestion?keyword=" + jQuery.trim($("#searchbar").val());
+			var keyword = $("#searchbar").val();
+                    if(jQuery.trim($("#searchbar").val()) != ''){
+                        $.get("/searchsuggestion/",{'keyword':keyword}, function(data){    
+	                 for (var i = data.length - 1; i >= 0; i--) {        
+        	             $('#re').append('<span class="suggestion">' + data[i] +'</span>' +'<br/>');
+			     $("#re").css("display","block");
+                	 }
+            		 }) 
+
+		     }
+                    });
+		$(document).on('click','.suggestion',function(){
+			var word = $(this).text();
+			$('#searchbar').val(word);
+			// $('#texe').trigger('click');触发搜索事件
+		})
+                
+        });
     </script>
 
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
