@@ -5,7 +5,9 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponse, Http404
 from django.utils import timezone
 from django.views.decorators.csrf import csrf_exempt
+from django.contrib.auth.decorators import login_required
 from django import forms
+from django.contrib.auth.models import User
 
 from django.contrib import auth  
 from django.contrib import messages  
@@ -91,18 +93,18 @@ def add_comment(request):
 
 
 def login(request):  
-    form = UserForm(request.POST)  
+	form = UserForm(request.POST)  
 	if form.is_valid():  
-        username = request.POST.get('username', '')  
-        password = request.POST.get('password', '')  
-        user = auth.authenticate(username=username, password=password)  
-        if user is not None and user.is_active:  
-        	auth.login(request, user)  
-            return render_to_response('login.html', RequestContext(request))  
-        else:  
-            return render_to_response('index.html', RequestContext(request, {'form': form,'password_is_wrong':True}))  
-    else:  
-            return render_to_response('index.html', RequestContext(request, {'form': form,}))  
+        	username = request.POST.get('username')  
+        	password = request.POST.get('password')  
+        	user = auth.authenticate(username=username, password=password)  
+        	if user is not None and user.is_active:  
+			auth.login(request, user)  
+            		return render_to_response('login.html', RequestContext(request))  
+	        else:  
+         	   	return render_to_response('index.html', RequestContext(request, {'form': form,'password_is_wrong':True}))  
+    	else:  
+        	return render_to_response('index.html', RequestContext(request, {'form': form,}))  
 
 class UserForm(forms.Form):  
     username = forms.CharField(  
@@ -131,16 +133,16 @@ class UserForm(forms.Form):
         else:  
             cleaned_data = super(UserForm, self).clean()   
 
-
+@csrf_exempt
 def signup(request):
-    curtime=time.strftime("%Y-%m-%d %H:%M:%S",time.localtime());
+    #curtime=time.strftime("%Y-%m-%d %H:%M:%S",time.localtime());
    
 
 
     if request.method == "POST":
     	username = request.POST.get('username')
     	email = request.POST.get('email')
-    	if len(django.contrib.auth.models.User.objects.filter(username = username)) > 0:
+    	if len(User.objects.filter(username = username)) > 0:
     		error_msg = "Username exits!!"
     		return render(request, 'yelp/index.html',{'error_msg': error_msg})
     	elif not email:
@@ -155,7 +157,7 @@ def signup(request):
     		else:
     			user = django.contrib.auth.models.User.objects.create_user(username, email, password)
     			user.save()
-    error_msg = "Sign up successfully!!!"
+    	error_msg = "Sign up successfully!!!"
 	return render(request, 'yelp/index.html',{'error_msg': error_msg})
 
 

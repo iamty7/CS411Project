@@ -330,7 +330,7 @@
 							</div>
 							<div class="error"></div>
 							<div class="form loginBox">
-								<form method="post" action="/login" accept-charset="UTF-8">
+								<form method="post" action="/login/" accept-charset="UTF-8">
 									<input id="username" class="form-control" type="text" placeholder="Username" name="username">
 									<input id="password" class="form-control" type="password" placeholder="Password" name="password">
 									<input class="btn btn-default btn-login" type="button" value="Login" onclick="loginAjax()">
@@ -341,7 +341,7 @@
 					<div class="box">
 						<div class="content registerBox" style="display:none;">
 							<div class="form">
-								<form method="post" html="{:multipart=>true}" data-remote="true" action="/signup" accept-charset="UTF-8">
+								<form method="post" html="{:multipart=>true}" data-remote="true" action="/signup/" accept-charset="UTF-8">
 									<input id="username" class="form-control" type="text" placeholder="Username" name="username">
 									<input id="email" class="form-control" type="text" placeholder="Email" name="email">
 									<input id="password" class="form-control" type="password" placeholder="Password" name="password">
@@ -372,10 +372,11 @@
 	<!--search suggestion-->
 
 <script>
-	{% if error_msg %}
 	$(document).ready(function(){
-		alert(error_msg)
-	}
+		{% if error_msg %}
+		alert("{{error_msg}}");
+		{% endif %}
+	});
 /*
     $(document).ready(function(){
       $("#searchbar").keyup(function(){
