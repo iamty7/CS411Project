@@ -155,7 +155,7 @@ def signup(request):
     			error_msg = "Passwords do not match!"
     			return render(request, 'yelp/index.html',{'error_msg': error_msg})
     		else:
-    			user = django.contrib.auth.models.User.objects.create_user(username, email, password)
+    			user = User.objects.create_user(username, email, password)
     			user.save()
     	error_msg = "Sign up successfully!!!"
 	return render(request, 'yelp/index.html',{'error_msg': error_msg})
