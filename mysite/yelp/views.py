@@ -7,13 +7,14 @@ from django.utils import timezone
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 from django import forms
-#from django.contrib.auth.models import User
+from django.contrib.auth.models import User as MyUser
+from django.db.models import Count
 
 from django.contrib import auth  
 from django.contrib import messages  
 from django.template.context import RequestContext  
 
-from .models import Business, Comment #, User
+from .models import Business, Comment, User, Review
 import json
 # Create your views here.
 
@@ -53,10 +54,15 @@ def search_suggestion(request):
 def business_detail(request, business_id):
 	try:
 		business = Business.objects.get(pk = business_id)
+		reviews_of_this_business = Review.objects.filter(business = business, stars__gte = 4)
+		users = set(review.user for review in reviews_of_this_business)
+		reviews = Review.objects.filter(user__in =  users, stars__gte = 4).exclude(business = business)
+		business_list = reviews.values('business').annotate(reviewCnt=Count('business')).order_by('-reviewCnt')[0:6]
+
 	except Business.DoesNotExist as e:
 		raise Http("Business does not exist!")
 	
-	return render(request, 'yelp/business.html', {'business': business})
+	return render(request, 'yelp/business.html', {'business': business, 'business_list':business_list})
 
 
 def delete_comment(request):
@@ -161,7 +167,7 @@ def signup(request):
     			error_msg = "Passwords do not match!"
     			return render(request, 'yelp/index.html',{'error_msg': error_msg})
     		else:
-    			user = User.objects.create_user(username, email, password)
+    			user = auth.models.User.objects.create_user(username, email, password)
     			user.save()
 	error_msg = "Sign up successfully!!!"
 	return render(request, 'yelp/index.html',{'error_msg': error_msg})
