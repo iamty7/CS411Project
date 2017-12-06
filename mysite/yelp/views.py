@@ -7,7 +7,7 @@ from django.utils import timezone
 from django.views.decorators.csrf import csrf_exempt
 from django.contrib.auth.decorators import login_required
 from django import forms
-from django.contrib.auth.models import User
+#from django.contrib.auth.models import User
 
 from django.contrib import auth  
 from django.contrib import messages  
@@ -18,10 +18,14 @@ import json
 # Create your views here.
 
 
+
 def home(request):
+    return render(request, 'yelp/index.html')
+
+def ihome(request, error_msg):
 	#business_list = Business.objects.all()[0:10]
 	#context = {'business_list': business_list}
-    return render(request, 'yelp/index.html')
+    return render(request, 'yelp/index.html',{'error_msg':error_msg})
 
 
 def search_business(request):
@@ -99,10 +103,13 @@ def login(request):
 	password = request.POST.get('password')  
 	user = auth.authenticate(username=username, password=password)  
 	if user is not None and user.is_active:  
-		#auth.login(request, user)  
-		return render(request, 'yelp/index.html', {'error_msg': "Login successfully!!!"})  
+		#auth.login(request, user) 
+		error_msg = 'Login successfully!!!' 
+		return render(request, 'yelp/index.html', {'error_msg': error_msg})  
 	else:  
-		return render(request, 'yelp/index.html', {'error_msg': "Username or password not correct!!"})
+		error_msg = 'Username or password not correct!!'
+		return render(request, 'yelp/index.html', {'error_msg': error_msg})
+		#return redirect(home, error_msg = "Username or password not correct!!")
 
 
 class UserForm(forms.Form):  
@@ -141,7 +148,7 @@ def signup(request):
     if request.method == "POST":
     	username = request.POST.get('username')
     	email = request.POST.get('email')
-    	if len(User.objects.filter(username = username)) > 0:
+    	if len(auth.models.User.objects.filter(username = username)) > 0:
     		error_msg = "Username exits!!"
     		return render(request, 'yelp/index.html',{'error_msg': error_msg})
     	elif not email:
