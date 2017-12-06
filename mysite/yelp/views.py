@@ -99,10 +99,10 @@ def login(request):
 	password = request.POST.get('password')  
 	user = auth.authenticate(username=username, password=password)  
 	if user is not None and user.is_active:  
-		auth.login(request, user)  
-		return render_to_response('index.html', RequestContext(request, {'error_msg': "Login successfully!!!"}))  
+		#auth.login(request, user)  
+		return render(request, 'yelp/index.html', {'error_msg': "Login successfully!!!"})  
 	else:  
-		return render_to_response('index.html', RequestContext(request, {'error_msg': "Username or password not correct!!"}))  
+		return render(request, 'yelp/index.html', {'error_msg': "Username or password not correct!!"})
 
 
 class UserForm(forms.Form):  
