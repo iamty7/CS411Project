@@ -17,7 +17,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 
 # Import view functions from yelp app.
-from yelp.views import home, search_business, business_detail, delete_comment, update_comment, add_comment, search_suggestion
+from yelp.views import home, search_business, business_detail, delete_comment, update_comment, add_comment, search_suggestion, logout
 
 urlpatterns = [
     url(r'^$', home, name = 'home'),
@@ -30,4 +30,7 @@ urlpatterns = [
     #url(r'^deleteComment/(?P<comment_id>\S*)/$', delete_comment ,name = 'delete-comment'),
     url(r'^business/(?P<business_id>\S+)/$', business_detail, name = 'business-detail'),
     url(r'^admin/', admin.site.urls),
+    url(r'^signup/$', signup, name = 'signup'),  
+    url(r'^logout/$', logout, name = 'logout'),  
+    url(r'^login/$', login, name = 'login'),  
 ]
