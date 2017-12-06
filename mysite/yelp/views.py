@@ -93,18 +93,17 @@ def add_comment(request):
 
 
 def login(request):  
-	form = UserForm(request.POST)  
-	if form.is_valid():  
-        	username = request.POST.get('username')  
-        	password = request.POST.get('password')  
-        	user = auth.authenticate(username=username, password=password)  
-        	if user is not None and user.is_active:  
-			auth.login(request, user)  
-            		return render_to_response('login.html', RequestContext(request))  
-	        else:  
-         	   	return render_to_response('index.html', RequestContext(request, {'form': form,'password_is_wrong':True}))  
-    	else:  
-        	return render_to_response('index.html', RequestContext(request, {'form': form,}))  
+	#form = UserForm(request.POST)  
+	#if form.is_valid():  
+	username = request.POST.get('username')  
+	password = request.POST.get('password')  
+	user = auth.authenticate(username=username, password=password)  
+	if user is not None and user.is_active:  
+		auth.login(request, user)  
+		return render_to_response('index.html', RequestContext(request, {'error_msg': "Login successfully!!!"}))  
+	else:  
+		return render_to_response('index.html', RequestContext(request, {'error_msg': "Username or password not correct!!"}))  
+
 
 class UserForm(forms.Form):  
     username = forms.CharField(  
@@ -157,7 +156,7 @@ def signup(request):
     		else:
     			user = User.objects.create_user(username, email, password)
     			user.save()
-    	error_msg = "Sign up successfully!!!"
+	error_msg = "Sign up successfully!!!"
 	return render(request, 'yelp/index.html',{'error_msg': error_msg})
 
 
