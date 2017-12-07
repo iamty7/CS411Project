@@ -78,8 +78,8 @@
                 <div class="row form-group">
                     <textarea type="text" name="content" id="content" value="" class="form-control" id="exampleMessage" placeholder=""></textarea>
                 </div>
-                <span class="pull-right">{{user.username}}</span>
                 <div class="row form-group pull-right">
+		    <div class="btn btn-lg btn-primary" style="text-align:right;cursor:unset;background-color:white;color:black;touch-action:none;">{{user.username}}</div>
                     <input type="hidden" name="post_type" value="send_chat"/>
                     <input type="submit" class="btn btn-lg btn-primary" value="Send"/>
                 </div>
@@ -91,7 +91,16 @@
 
         {% block script %}
     </div>
-
+	<!-- footer -->
+	<footer class="footer">
+		<div class="footer-bottom">
+			<div class="container">
+				<div class="col-md-12">
+					<p>Project2035&nbspof&nbspCS411--All Rights Reserved<br>University of Illinois, Urbana Champaign</p>
+				</div>
+			</div>
+		</div>
+	</footer>
     <script>
        $(function() {  
         updateMsg();    
