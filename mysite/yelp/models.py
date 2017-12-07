@@ -9,6 +9,8 @@ from __future__ import unicode_literals
 from django.utils.encoding import python_2_unicode_compatible
 from django.db import models
 from django.core.urlresolvers import reverse
+from django.contrib.auth.models import User as MyUser
+
 
 class Attribute(models.Model):
     business = models.ForeignKey('Business', models.DO_NOTHING)
@@ -289,3 +291,12 @@ class Comment(models.Model):
 
     class Meta:
         db_table = 'comment'
+
+
+class Chat(models.Model):
+    sender = models.ForeignKey(MyUser, related_name='has_chats')
+    content = models.TextField()
+    time = models.DateTimeField(auto_now_add=True, null=True)
+
+    def __unicode__(self):
+        return u'%s' % self.content

@@ -1,0 +1,64 @@
+{% block title %}Chatroom{% endblock %}
+
+
+{% block content %}
+
+<form id="logout"  method="POST" action="/logout/">
+        <input type="submit" class="btn btn-lg btn-primary" value="Logout"/>
+</form>
+
+
+<div class="list-group col-md-10 col-md-offset-1 well">
+    <div class="list-group-item">
+        {% for chat in chats %}
+        <h4 class="list-group-item-heading">{{chat.sender}}:{{chat.content}}</h4>
+        <p class="list-group-item-text">{{chat.time}}</p>
+        <input type="hidden" class="chat_id" value="{{chat.id}}"/>
+        <br>
+        {% endfor %}
+    </div>
+</div>
+
+<form id="chatForm" class="form-horizontal panel container" method="POST" action="/chatroom/post/">
+    {% csrf_token %}
+    <div class="form-group col-md-10">
+        <textarea type="text" name="content" id="content" value="" class="form-control" id="exampleMessage" placeholder=""></textarea>
+    </div>
+    <div class="form-group col-md-4">
+        <input type="hidden" name="post_type" value="send_chat"/>
+        <input type="submit" class="btn btn-lg btn-primary" value="Send"/>
+    </div>
+</form>
+{% endblock %}
+
+{% block script %}
+<script>
+ $(function() {  
+    updateMsg();    
+         
+    $("#chatForm").submit(function() {  
+ 
+        $.post("/chatroom/post/",  
+            $('#chatForm').serialize(),
+            function(data) {  
+            $("#content").val("");  
+        });  
+        return false;     
+    });  
+});  
+
+
+function updateMsg() {  
+    $.post(
+        "/chatroom/post/", 
+        {
+        post_type: "get_chat",
+        last_chat_id: $(".chat_id").last().val()
+        }, 
+        function(data) {
+            $('.list-group-item').append(data);  
+    });  
+    setTimeout("updateMsg()", 1000);      
+}  
+</script>
+{% endblock %}

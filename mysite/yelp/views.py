@@ -111,9 +111,11 @@ def login(request):
 	password = request.POST.get('password')  
 	user = auth.authenticate(username=username, password=password)  
 	if user is not None and user.is_active:  
-		#auth.login(request, user) 
-		error_msg = 'Login successfully!!!' 
-		return render(request, 'yelp/index.html', {'error_msg': error_msg})  
+		auth.login(request, user) 
+		#error_msg = 'Login successfully!!!' 
+		#return render(request, 'yelp/index.html', {'error_msg': error_msg})  
+		return render(request, 'yelp/chatroom.html')
+		return redirect(initialChatroom)
 	else:  
 		error_msg = 'Username or password not correct!!'
 		return render(request, 'yelp/index.html', {'error_msg': error_msg})
@@ -180,3 +182,25 @@ def signup(request):
 def logout(request):  
     auth.logout(request)  
     return redirect(home)
+
+def initialChatroom(request):
+    chats = list(Chat.objects.all())[-100:]
+    return render(request, 'yelp/chatroom.html', {'chats': chats})
+
+@csrf_exempt
+def chatroom_post(request):
+    if request.method == 'POST':
+        post_type = request.POST.get('post_type')
+        if post_type == 'send_chat':
+            new_chat = Chat.objects.create(
+                content = request.POST.get('content'),
+                sender = request.user,
+            )
+            new_chat.save()
+            return HttpResponse()
+        elif post_type == 'get_chat':
+            last_chat_id = int(request.POST.get('last_chat_id'))
+            chats = Chat.objects.filter(id__gt = last_chat_id)
+            return render(request, 'yelp/chat_list.html', {'chats': chats})
+    else:
+        raise Http404
