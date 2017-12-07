@@ -48,7 +48,6 @@
                 
             
             <div class = "col-md-1" sytle="margin-top:15px;">
-                {{user.username}}
                 <form id="logout"  method="POST" action="/logout/">
                     {% csrf_token %}
                     <input type="submit" class="btn btn-lg btn-primary" value="Logout"/>
@@ -79,6 +78,7 @@
                 <div class="row form-group">
                     <textarea type="text" name="content" id="content" value="" class="form-control" id="exampleMessage" placeholder=""></textarea>
                 </div>
+                <span class="pull-right">{{user.username}}</span>
                 <div class="row form-group pull-right">
                     <input type="hidden" name="post_type" value="send_chat"/>
                     <input type="submit" class="btn btn-lg btn-primary" value="Send"/>
