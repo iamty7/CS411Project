@@ -14,7 +14,7 @@ from django.contrib import auth
 from django.contrib import messages  
 from django.template.context import RequestContext  
 
-from .models import Business, Comment, User, Review
+from .models import Business, Comment, User, Review, Chat
 import json
 # Create your views here.
 
@@ -114,7 +114,7 @@ def login(request):
 		auth.login(request, user) 
 		#error_msg = 'Login successfully!!!' 
 		#return render(request, 'yelp/index.html', {'error_msg': error_msg})  
-		return render(request, 'yelp/chatroom.html')
+		#return render(request, 'yelp/chatroom.html')
 		return redirect(initialChatroom)
 	else:  
 		error_msg = 'Username or password not correct!!'
