@@ -32,22 +32,22 @@
     <nav class="navbar navbar-fixed-top navigation" style="background-color: #292c47; role=" navigation">
         <div class="container">
             <!--Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header col-md-9">
+            <div class="navbar-header col-md-10">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                
+
                 <a class="navbar-brand" href="{% url 'home' %}">
                     <font size="5" color="#e84545"><strong>Sprout</strong></font>
                 </a>
             </div> 
-            <div class = "col-md-1">
+            <div class = "col-md-1" sytle = "margin-top:15px;">
                 <a class ="avbar-brand">{{user.username}}</a>
             </div>
-            <div class = "col-md-2">
+            <div class = "col-md-1" sytle = "margin-top:15px;">
                 <a>
                     <form id="logout"  method="POST" action="/logout/">
                         {% csrf_token %}
@@ -68,8 +68,8 @@
             <div class="list-group-item">
                 {% for chat in chats %}
                 <h5 class="list-group-item-heading">{{chat.sender}}:</h5>
-                <h6>{{chat.content}}:</h6>
-                <p class="list-group-item-text">{{chat.time}}</p>
+                <p>{{chat.content}}</p>
+                <h6 class="list-group-item-text">{{chat.time}}</h6>
                 <input type="hidden" class="chat_id" value="{{chat.id}}"/>
                 <br>
                 {% endfor %}
