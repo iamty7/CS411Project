@@ -46,13 +46,14 @@
 
                 <ul class="primary-nav pull-right" style="padding-top:15px;">
                     {% if user %}
-                    <li>{{user.username}}</li>
+                    <li><a>{{user.username}}</a></li>
                     {% endif %}
-                    <li>
+                    <li><a>
                         <form id="logout"  method="POST" action="/logout/">
                          {% csrf_token %}
                         <input type="submit" class="btn btn-lg btn-primary" value="Logout"/>
                         </form>
+                        </a>
                     </li>
                 </ul>
             </div>
@@ -74,9 +75,8 @@
                 <br>
                 {% endfor %}
             </div>
-        </div>
 
-        <form id="chatForm" class="form-horizontal panel container" method="POST" action="/chatroom/post/">
+            <form id="chatForm" class="form-horizontal panel container" method="POST" action="/chatroom/post/">
             {% csrf_token %}
             <div class="form-group col-md-10 col-md-offset-1 well">
                 <textarea type="text" name="content" id="content" value="" class="form-control" id="exampleMessage" placeholder=""></textarea>
@@ -85,11 +85,15 @@
                 <input type="hidden" name="post_type" value="send_chat"/>
                 <input type="submit" class="btn btn-lg btn-primary" value="Send"/>
             </div>
-        </form>
+            </form>
+        </div>
+
+
         {% endblock %}
 
         {% block script %}
     </div>
+    
     <script>
      $(function() {  
         updateMsg();    
