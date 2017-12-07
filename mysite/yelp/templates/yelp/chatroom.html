@@ -1,4 +1,3 @@
-{% extends "base.html" %}
 {% block title %}Chatroom{% endblock %}
 
 
@@ -20,7 +19,7 @@
     </div>
 </div>
 
-<form id="chatForm" class="form-horizontal panel container" method="POST" action="/post/">
+<form id="chatForm" class="form-horizontal panel container" method="POST" action="/chatroom/post/">
     {% csrf_token %}
     <div class="form-group col-md-10">
         <textarea type="text" name="content" id="content" value="" class="form-control" id="exampleMessage" placeholder=""></textarea>
@@ -51,7 +50,7 @@
 
 function updateMsg() {  
     $.post(
-        "chatroom/post/", 
+        "/chatroom/post/", 
         {
         post_type: "get_chat",
         last_chat_id: $(".chat_id").last().val()
