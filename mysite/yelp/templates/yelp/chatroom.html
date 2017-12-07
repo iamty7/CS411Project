@@ -42,7 +42,7 @@
                 <a class="navbar-brand" href="{% url 'home' %}">
                     <font size="5" color="#e84545"><strong>Sprout</strong></font>
                 </a>
-                <a style = "padding-right: 80px;">{{user.username}}</a>
+                <a class ="avbar-brand" style = "padding-right: 80px;">{{user.username}}</a>
                 <a class = "pull-right">
                     <form id="logout"  method="POST" action="/logout/">
                     {% csrf_token %}
@@ -56,10 +56,10 @@
         <!-- /.container -->
     </nav>
     
-    <div class="container" style=padding-top:30px ;>
+    <div class="container" style="padding-top:80px;"">
         {% block content %}
 
-        <div class="list-group col-md-12">
+        <div class="row list-group">
             <div class="list-group-item">
                 {% for chat in chats %}
                 <h4 class="list-group-item-heading">{{chat.sender}}:{{chat.content}}</h4>
@@ -71,10 +71,10 @@
 
             <form id="chatForm" class="form-horizontal panel container" method="POST" action="/chatroom/post/">
             {% csrf_token %}
-            <div class="form-group col-md-12">
+            <div class="row form-group">
                 <textarea type="text" name="content" id="content" value="" class="form-control" id="exampleMessage" placeholder=""></textarea>
             </div>
-            <div class="row form-group pull-right">
+            <div class="row form-group">
                 <input type="hidden" name="post_type" value="send_chat"/>
                 <input type="submit" class="btn btn-lg btn-primary" value="Send"/>
             </div>
