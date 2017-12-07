@@ -109,9 +109,9 @@
         <div class="row" style=padding-top:30px ;>
             {% for busi in business_list %}
             <div class="col-md-2 portfolio-item">
-                <img class="img-responsive" src="images\fig\8.jpg" alt="">
+                <img class="img-responsive" src="/static/homepage/images/fig/3.jpg"" alt="">
                 <h5>{{busi.name}}</h5>
-                <p><<div class="my-rating jq-stars {{busi.id}}"></div><</p>
+                <p><div class="my-rating jq-stars {{busi.id}}"></div></p>
             </div>
             {% endfor %}
         </div>
@@ -151,11 +151,6 @@
             </div>
         </div>
     </div>
-
-
-    {% for busi in business_list %}
-    <p>{{busi.name}}</p>
-    {% endfor %}
     
     <!-- /.row -->
     <!-- 模态框（Modal） -->
