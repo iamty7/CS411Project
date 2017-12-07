@@ -17,7 +17,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 
 # Import view functions from yelp app.
-from yelp.views import home, search_business, business_detail, delete_comment, update_comment, add_comment, search_suggestion, logout, signup, login, chatroom_post, initialChatroom
+from yelp.views import home, search_business, business_detail, delete_comment, update_comment, add_comment, search_suggestion, logout, signup, login, chatroom_post, chatroom
 
 urlpatterns = [
     url(r'^$', home, name = 'home'),

@@ -184,8 +184,12 @@ def logout(request):
     return redirect(home)
 
 def chatroom(request):
-    chats = list(Chat.objects.all())[-100:]
-    return render(request, 'yelp/chatroom.html', {'chats': chats})
+	try:
+		user = MyUser.objects.get(username = request.user)
+	except MyUser.DoesNotExist:
+		return redirect(home)
+	chats = list(Chat.objects.all())[-100:]
+	return render(request, 'yelp/chatroom.html', {'chats': chats, 'user': user})
 
 @csrf_exempt
 def chatroom_post(request):
