@@ -1,3 +1,5 @@
+
+<html>
 <head>
 	<meta charset="utf-8">
 	<meta name="description" content="">
@@ -13,7 +15,6 @@
 	<!--login-->
 	<link href="/static/homepage/css/login-register.css" rel="stylesheet" />
 	<script src="/static/homepage/js/login-register.js" type="text/javascript"></script>
-	<script src="/static/homepage/js/jquery.min.js"></script>
 	<script src="/static/homepage/js/bootstrap.min.js" type="text/javascript"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script>
@@ -28,67 +29,92 @@
 	<script src="/static/homepage/js/main.js"></script>
 </head>
 
-{% block content %}
-{% if user %}
-	{{user.username}}
-{% endif %}
-<form id="logout"  method="POST" action="/logout/">
-        {% csrf_token %}
-        <input type="submit" class="btn btn-lg btn-primary" value="Logout"/>
-</form>
+<body>
+    <nav class="navbar navbar-fixed-top navigation" style="background-color: #292c47; role=" navigation">
+        <div class="container">
+            <!--Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="{% url 'home' %}">
+                    <font size="5" color="#e84545"><strong>Sprout</strong></font>
+                </a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+    
+    <div class="container" style=padding-top:30px ;>
+        {% block content %}
+        {% if user %}
+        {{user.username}}
+        {% endif %}
+        <form id="logout"  method="POST" action="/logout/">
+            {% csrf_token %}
+            <input type="submit" class="btn btn-lg btn-primary" value="Logout"/>
+        </form>
 
 
-<div class="list-group col-md-10 col-md-offset-1 well">
-    <div class="list-group-item">
-        {% for chat in chats %}
-        <h4 class="list-group-item-heading">{{chat.sender}}:{{chat.content}}</h4>
-        <p class="list-group-item-text">{{chat.time}}</p>
-        <input type="hidden" class="chat_id" value="{{chat.id}}"/>
-        <br>
-        {% endfor %}
+        <div class="list-group col-md-10 col-md-offset-1 well">
+            <div class="list-group-item">
+                {% for chat in chats %}
+                <h4 class="list-group-item-heading">{{chat.sender}}:{{chat.content}}</h4>
+                <p class="list-group-item-text">{{chat.time}}</p>
+                <input type="hidden" class="chat_id" value="{{chat.id}}"/>
+                <br>
+                {% endfor %}
+            </div>
+        </div>
+
+        <form id="chatForm" class="form-horizontal panel container" method="POST" action="/chatroom/post/">
+            {% csrf_token %}
+            <div class="form-group col-md-10">
+                <textarea type="text" name="content" id="content" value="" class="form-control" id="exampleMessage" placeholder=""></textarea>
+            </div>
+            <div class="form-group col-md-4">
+                <input type="hidden" name="post_type" value="send_chat"/>
+                <input type="submit" class="btn btn-lg btn-primary" value="Send"/>
+            </div>
+        </form>
+        {% endblock %}
+
+        {% block script %}
     </div>
-</div>
+    <script>
+     $(function() {  
+        updateMsg();    
 
-<form id="chatForm" class="form-horizontal panel container" method="POST" action="/chatroom/post/">
-    {% csrf_token %}
-    <div class="form-group col-md-10">
-        <textarea type="text" name="content" id="content" value="" class="form-control" id="exampleMessage" placeholder=""></textarea>
-    </div>
-    <div class="form-group col-md-4">
-        <input type="hidden" name="post_type" value="send_chat"/>
-        <input type="submit" class="btn btn-lg btn-primary" value="Send"/>
-    </div>
-</form>
-{% endblock %}
+        $("#chatForm").submit(function() {  
 
-{% block script %}
-<script>
- $(function() {  
-    updateMsg();    
-         
-    $("#chatForm").submit(function() {  
- 
-        $.post("/chatroom/post/",  
-            $('#chatForm').serialize(),
-            function(data) {  
-            $("#content").val("");  
+            $.post("/chatroom/post/",  
+                $('#chatForm').serialize(),
+                function(data) {  
+                    $("#content").val("");  
+                });  
+            return false;     
         });  
-        return false;     
     });  
-});  
 
 
-function updateMsg() {  
-    $.post(
-        "/chatroom/post/", 
-        {
-        post_type: "get_chat",
-        last_chat_id: $(".chat_id").last().val()
-        }, 
-        function(data) {
-            $('.list-group-item').append(data);  
-    });  
-    setTimeout("updateMsg()", 1000);      
-}  
+     function updateMsg() {  
+        $.post(
+            "/chatroom/post/", 
+            {
+                post_type: "get_chat",
+                last_chat_id: $(".chat_id").last().val()
+            }, 
+            function(data) {
+                $('.list-group-item').append(data);  
+            });  
+        setTimeout("updateMsg()", 1000);      
+    }  
 </script>
 {% endblock %}
+</body>
+</html>
