@@ -34,6 +34,6 @@ urlpatterns = [
     url(r'^logout/$', logout, name = 'logout'),  
     url(r'^login/$', login, name = 'login'),  
     url(r'^chatroom/post/$', chatroom_post, name = 'chatroom-post'), 
-    url(r'^initialChatroom/$', initialChatroom, name = 'initialChatroom'),
+    url(r'^chatroom/$', chatroom, name = 'chatroom'),
 
 ]

@@ -115,7 +115,7 @@ def login(request):
 		#error_msg = 'Login successfully!!!' 
 		#return render(request, 'yelp/index.html', {'error_msg': error_msg})  
 		#return render(request, 'yelp/chatroom.html')
-		return redirect(initialChatroom)
+		return redirect(chatroom)
 	else:  
 		error_msg = 'Username or password not correct!!'
 		return render(request, 'yelp/index.html', {'error_msg': error_msg})
@@ -183,7 +183,7 @@ def logout(request):
     auth.logout(request)  
     return redirect(home)
 
-def initialChatroom(request):
+def chatroom(request):
     chats = list(Chat.objects.all())[-100:]
     return render(request, 'yelp/chatroom.html', {'chats': chats})
 

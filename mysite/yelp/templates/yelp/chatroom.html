@@ -32,6 +32,7 @@
 {% block content %}
 
 <form id="logout"  method="POST" action="/logout/">
+        {% csrf_token %}
         <input type="submit" class="btn btn-lg btn-primary" value="Logout"/>
 </form>
 
