@@ -32,21 +32,26 @@
     <nav class="navbar navbar-fixed-top navigation" style="background-color: #292c47; role=" navigation">
         <div class="container">
             <!--Brand and toggle get grouped for better mobile display -->
-            <div class="navbar-header">
+            <div class="navbar-header col-md-9">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
+                
                 <a class="navbar-brand" href="{% url 'home' %}">
                     <font size="5" color="#e84545"><strong>Sprout</strong></font>
                 </a>
-                <a class ="avbar-brand" style = "padding-right: 80px;">{{user.username}}</a>
-                <a class = "pull-right">
+            </div> 
+            <div class = "col-md-1">
+                <a class ="avbar-brand">{{user.username}}</a>
+            </div>
+            <div class = "col-md-2">
+                <a>
                     <form id="logout"  method="POST" action="/logout/">
-                    {% csrf_token %}
-                    <input type="submit" class="btn btn-lg btn-primary" value="Logout"/>
+                        {% csrf_token %}
+                        <input type="submit" class="btn btn-lg btn-primary" value="Logout"/>
                     </form>
                 </a>
             </div>
@@ -62,7 +67,8 @@
         <div class="row list-group">
             <div class="list-group-item">
                 {% for chat in chats %}
-                <h4 class="list-group-item-heading">{{chat.sender}}:{{chat.content}}</h4>
+                <h5 class="list-group-item-heading">{{chat.sender}}:</h5>
+                <h6>{{chat.content}}:</h6>
                 <p class="list-group-item-text">{{chat.time}}</p>
                 <input type="hidden" class="chat_id" value="{{chat.id}}"/>
                 <br>
@@ -70,14 +76,14 @@
             </div>
 
             <form id="chatForm" class="form-horizontal panel container" method="POST" action="/chatroom/post/">
-            {% csrf_token %}
-            <div class="row form-group">
-                <textarea type="text" name="content" id="content" value="" class="form-control" id="exampleMessage" placeholder=""></textarea>
-            </div>
-            <div class="row form-group pull-right">
-                <input type="hidden" name="post_type" value="send_chat"/>
-                <input type="submit" class="btn btn-lg btn-primary" value="Send"/>
-            </div>
+                {% csrf_token %}
+                <div class="row form-group">
+                    <textarea type="text" name="content" id="content" value="" class="form-control" id="exampleMessage" placeholder=""></textarea>
+                </div>
+                <div class="row form-group pull-right">
+                    <input type="hidden" name="post_type" value="send_chat"/>
+                    <input type="submit" class="btn btn-lg btn-primary" value="Send"/>
+                </div>
             </form>
         </div>
 
@@ -88,7 +94,7 @@
     </div>
 
     <script>
-     $(function() {  
+       $(function() {  
         updateMsg();    
 
         $("#chatForm").submit(function() {  
@@ -103,7 +109,7 @@
     });  
 
 
-     function updateMsg() {  
+       function updateMsg() {  
         $.post(
             "/chatroom/post/", 
             {
