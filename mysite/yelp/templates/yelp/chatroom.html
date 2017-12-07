@@ -43,6 +43,18 @@
                 <a class="navbar-brand" href="{% url 'home' %}">
                     <font size="5" color="#e84545"><strong>Sprout</strong></font>
                 </a>
+
+                <ul class="primary-nav pull-right" style="padding-top:15px;">
+                    {% if user %}
+                    <li>{{user.username}}</li>
+                    {% endif %}
+                    <li>
+                        <form id="logout"  method="POST" action="/logout/">
+                         {% csrf_token %}
+                        <input type="submit" class="btn btn-lg btn-primary" value="Logout"/>
+                        </form>
+                    </li>
+                </ul>
             </div>
             <!-- Collect the nav links, forms, and other content for toggling -->
             <!-- /.navbar-collapse -->
@@ -52,14 +64,6 @@
     
     <div class="container" style=padding-top:30px ;>
         {% block content %}
-        {% if user %}
-        {{user.username}}
-        {% endif %}
-        <form id="logout"  method="POST" action="/logout/">
-            {% csrf_token %}
-            <input type="submit" class="btn btn-lg btn-primary" value="Logout"/>
-        </form>
-
 
         <div class="list-group col-md-10 col-md-offset-1 well">
             <div class="list-group-item">
@@ -74,10 +78,10 @@
 
         <form id="chatForm" class="form-horizontal panel container" method="POST" action="/chatroom/post/">
             {% csrf_token %}
-            <div class="form-group col-md-10">
+            <div class="form-group col-md-10 col-md-offset-1 well">
                 <textarea type="text" name="content" id="content" value="" class="form-control" id="exampleMessage" placeholder=""></textarea>
             </div>
-            <div class="form-group col-md-4">
+            <div class="form-group col-md-4 pull-right">
                 <input type="hidden" name="post_type" value="send_chat"/>
                 <input type="submit" class="btn btn-lg btn-primary" value="Send"/>
             </div>
