@@ -57,9 +57,9 @@ def business_detail(request, business_id):
 		reviews_of_this_business = Review.objects.filter(business = business, stars__gte = 4)
 		users = set(review.user for review in reviews_of_this_business)
 		reviews = Review.objects.filter(user__in =  users, stars__gte = 4).exclude(business = business)
-		blist = reviews.values('business').annotate(reviewCnt=Count('business')).order_by('-reviewCnt')[0:6].values('business')
+		blist = reviews.values('business').annotate(reviewCnt=Count('business')).order_by('-reviewCnt').values('business')
 
-		business_list = Business.objects.filter(pk__in = blist)
+		business_list = Business.objects.filter(pk__in = blist)[0:6]
 
 	except Business.DoesNotExist as e:
 		raise Http("Business does not exist!")
