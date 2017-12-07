@@ -44,11 +44,11 @@
                     <font size="5" color="#e84545"><strong>Sprout</strong></font>
                 </a>
             </div> 
-            <div class = "col-md-1" sytle = "margin-top:15px;">
-                <a class ="avbar-brand">{{user.username}}</a>
+            <div class = "col-md-1">
+                <a class ="avbar-brand" sytle="margin-top:15px;">{{user.username}}</a>
             </div>
-            <div class = "col-md-1" sytle = "margin-top:15px;">
-                <a>
+            <div class = "col-md-1">
+                <a sytle="margin-top:15px;">
                     <form id="logout"  method="POST" action="/logout/">
                         {% csrf_token %}
                         <input type="submit" class="btn btn-lg btn-primary" value="Logout"/>
@@ -69,7 +69,7 @@
                 {% for chat in chats %}
                 <h5 class="list-group-item-heading">{{chat.sender}}:</h5>
                 <p>{{chat.content}}</p>
-                <h6 class="list-group-item-text">{{chat.time}}</h6>
+                <h8 class="list-group-item-text">{{chat.time}}</h8>
                 <input type="hidden" class="chat_id" value="{{chat.id}}"/>
                 <br>
                 {% endfor %}
