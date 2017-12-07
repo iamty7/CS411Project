@@ -104,7 +104,18 @@
         </div>
     </div>
     <!-- /.row -->
-
+    <div class="container" style="padding-top:30px;">
+        <h3> You may also like: </h3>>  
+        <div class="row" style=padding-top:30px ;>
+            {% for busi in business_list %}
+            <div class="col-md-2 portfolio-item">
+                <img class="img-responsive" src="images\fig\8.jpg" alt="">
+                <h5>{{busi.name}}</h5>
+                <p><<div class="my-rating jq-stars {{busi.id}}"></div><</p>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
     <!-- Content Row -->
     <!-- Content Row -->
     <div class="container" style="padding-top:30px;">  
@@ -247,6 +258,18 @@
                 readOnly:true
             });
         });
+    </script>
+
+    <script>
+        {% for busi in business_list %}
+        $(function() {
+            $(".{{busi.id}}").starRating({
+                initialRating: {{busi.stars}},
+                starSize: 25,
+                readOnly:true
+            });
+        });
+        {% endfor %}
     </script>
 </body>
 
