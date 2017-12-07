@@ -93,10 +93,10 @@
             </div>
             <!-- /.col-md-8 -->
             <div class="col-md-3">
-                <h3 style=padding-top:20px;>{{business.name }}</h3>
-                <p>Address: {{ business.address }}</p>
-                <p>City: {{business.city }}</p>
-                <p>State: {{business.state }}</p>
+                <h3 style="padding-top:20px;">{{business.name}}</h3>
+                <p>Address: {{ business.address}}</p>
+                <p>City: {{business.city}}</p>
+                <p>State: {{business.state}}</p>
                 <p><div class="my-rating jq-stars {{business.id}}"></div></p>
                 <button class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal" >Write a comment</button>
             </div>
@@ -105,8 +105,8 @@
     </div>
     <!-- /.row -->
     <div class="container" style="padding-top:30px;">
-        <h3> You may also like: </h3>>  
-        <div class="row" style=padding-top:30px ;>
+        <h3> You may also like: </h3>  
+        <div class="row" style="padding-top:5px;">
             {% for busi in business_list %}
             <div class="col-md-2 portfolio-item">
                 <img class="img-responsive" src="/static/homepage/images/fig/3.jpg"" alt="">
