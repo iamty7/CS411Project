@@ -33,4 +33,5 @@ urlpatterns = [
     url(r'^signup/$', signup, name = 'signup'),  
     url(r'^logout/$', logout, name = 'logout'),  
     url(r'^login/$', login, name = 'login'),  
+    url(r'^chatroom/post/$', chatroom_post, name = 'post'), 
 ]
