@@ -300,3 +300,29 @@ class Chat(models.Model):
 
     def __unicode__(self):
         return u'%s' % self.content
+
+class Urbana_r(models.Model):
+    id = models.CharField(primary_key=True, max_length=22)
+    name = models.CharField(max_length=255, blank=True, null=True)
+    neighborhood = models.CharField(max_length=255, blank=True, null=True)
+    address = models.CharField(max_length=255, blank=True, null=True)
+    city = models.CharField(max_length=255, blank=True, null=True)
+    state = models.CharField(max_length=255, blank=True, null=True)
+    postal_code = models.CharField(max_length=255, blank=True, null=True)
+    latitude = models.FloatField(blank=True, null=True)
+    longitude = models.FloatField(blank=True, null=True)
+    stars = models.FloatField(blank=True, null=True)
+    review_count = models.IntegerField(blank=True, null=True)
+    is_open = models.IntegerField(blank=True, null=True)
+
+
+    def __str__(self):
+        return self.name
+
+    #def get_absolute_url(self):
+    #    return reverse('business-detail', kwargs = {'business_id': self.pk})
+
+
+    class Meta:
+        managed = False
+        db_table = 'urbana_r'

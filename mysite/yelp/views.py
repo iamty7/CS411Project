@@ -17,7 +17,7 @@ from django.contrib import auth
 from django.contrib import messages  
 from django.template.context import RequestContext  
 
-from .models import Business, Comment, User, Review, Chat
+from .models import Business, Comment, User, Review, Chat, Urbana_r
 import json
 # Create your views here.
 
@@ -34,13 +34,19 @@ def ihome(request, error_msg):
 
 def search_business(request):
 	keyword = request.POST.get('keyword')
+	city = request.POST.get('city')
 	error_msg = ''
 
-	if not keyword:
+
+	if  keyword =='':
 		error_msg = 'Please type your keyword to search!'
 		return render(request, 'yelp/searchResults.html', {'error_msg': error_msg})
-
-	business_list = Business.objects.filter(name__icontains = keyword)[0:9]
+	if city == 'Urbana' or city =='urbana':
+		business_list = Urbana_r.objects.filter(name__icontains = keyword, city__icontains = city)[0:9]
+	elif city !='':
+		business_list = Business.objects.filter(name__icontains = keyword, city__icontains = city)[0:9]
+	else:
+		business_list = Business.objects.filter(name__icontains = keyword)[0:9]
 	return render(request, 'yelp/searchResults.html', {'business_list': business_list, 'error_msg': error_msg})
 
 #@csrf_exempt
