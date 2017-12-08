@@ -9,6 +9,8 @@ from django.contrib.auth.decorators import login_required
 from django import forms
 from django.contrib.auth.models import User as MyUser
 from django.db.models import Count
+from django.db import connection
+from django.db import models
 
 from django.contrib import auth  
 from django.contrib import messages  
@@ -60,12 +62,15 @@ def business_detail(request, business_id):
 		#blist = reviews.values('business').annotate(reviewCnt=Count('business')).order_by('-reviewCnt').values('business')
 
 		#business_list = Business.objects.filter(pk__in = blist)[0:6]
-		cur = connection.curosr()
+		cur = connection.cursor()
 		cur.callproc('get_recommendation',[business_id])
 		results = cur.fetchall()
 		cur.close()
 		
-		business_list = Business.objects.filter(pk__in = results)
+		id_list = []
+		for row in results:
+			id_list.append(Business(*row).id)
+		business_list = Business.objects.filter(pk__in = id_list)
 
 
 	except Business.DoesNotExist as e:

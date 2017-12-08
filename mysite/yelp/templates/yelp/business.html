@@ -102,7 +102,7 @@
             {% for busi in business_list %}
             <div class="col-md-2 portfolio-item">
                 <img class="img-responsive" src="/static/homepage/images/fig/3.jpg"" alt="">
-                <h5>{{busi.name}}</h5>
+                <h5><a href="{% url 'business-detail' busi.id %}">{{busi.name}}</a></h5>
                 <p><div class="my-rating jq-stars {{busi.id}}"></div></p>
             </div>
             {% endfor %}
