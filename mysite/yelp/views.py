@@ -11,6 +11,7 @@ from django.contrib.auth.models import User as MyUser
 from django.db.models import Count
 from django.db import connection
 from django.db import models
+from django.db import OperationalError
 
 from django.contrib import auth  
 from django.contrib import messages  
@@ -99,11 +100,13 @@ def update_comment(request):
 	return redirect(business_detail, business_id = business.id)
 
 def add_comment(request):
-	business_id = request.POST.get('business_id')
-    	comment_text = request.POST.get('comment_text')
-    	business = Business.objects.get(pk=business_id)
-    	business.comment_set.create(comment_text=comment_text,comm_date=timezone.now())
-
+	try:
+		business_id = request.POST.get('business_id')
+	    	comment_text = request.POST.get('comment_text')
+    		business = Business.objects.get(pk=business_id)
+	    	business.comment_set.create(comment_text=comment_text,comm_date=timezone.now())
+	except OperationalError as e:
+		return redirect(business_detail, business_id = business_id)
 	return redirect(business_detail, business_id = business_id)
 
 
